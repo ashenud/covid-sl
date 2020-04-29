@@ -1,0 +1,676 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <link rel="apple-touch-icon" sizes="76x76" href="./assets/img/apple-icon.png">
+    <link rel="icon" type="image/png" href="./assets/img/favicon.png">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta content='width=device-width, initial-scale=1.0, shrink-to-fit=no' name='viewport' />
+    
+      <!--     Fonts and icons     -->
+    <link rel="stylesheet" href="./assets/css/material-icons.css">
+    <link rel="stylesheet" href="./assets/css/fontawesome/css/all.css">
+    <link rel="stylesheet" href="./assets/css/unicode-fonts.css">
+    <link rel="stylesheet" href="./assets/css/english-fonts.css">
+    
+    <!-- CSS Files -->
+    <link rel="stylesheet" href="./assets/css/for-navbar.css"/>
+    <link rel="stylesheet" href="./assets/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="./assets/css/animate.css"/>
+    <link rel="stylesheet" href="./assets/css/style-index.css"/>
+    
+    <title>
+      Coronavirus Sri Lanka - Analytics Dashboard
+    </title>
+</head>
+
+<body class="index-page sidebar-collapse animated-area">
+       
+    <!-- navbar area -->
+    <nav class="navbar navbar-expand-lg fixed-top navbar-transparent " color-on-scroll="30">
+        <div class="container nav-content">
+            <div class="navbar-translate">
+                <a class="navbar-brand" href="#" rel="tooltip" data-placement="bottom">
+                    <img src="assets/img/icon-bw.png">COVID-19
+                </a>
+                <button class="navbar-toggler navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-bar top-bar"></span>
+                    <span class="navbar-toggler-bar middle-bar"></span>
+                    <span class="navbar-toggler-bar bottom-bar"></span>
+                </button>
+            </div>
+            <div class="collapse navbar-collapse justify-content-end" id="navigation" data-nav-image="">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link js-scroll-trigger" href="#figures" onclick="scrollToDownload()">
+                            <i class="now-ui-icons files_single-copy-04"></i>
+                            <p>figures</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link js-scroll-trigger" href="#HospitalData" onclick="scrollToDownload()">
+                            <i class="now-ui-icons health_ambulance"></i>
+                            <p>hospital data</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link js-scroll-trigger" href="#footer" onclick="scrollToDownload()">
+                            <i class="now-ui-icons travel_info"></i>
+                            <p>About</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="./index.html">
+                            <img src="./assets/img/eng-to-si.png" class="language">
+                        </a>
+                    </li>                  
+                </ul>
+            </div>
+        </div>
+    </nav>
+    
+    <!-- loading area -->
+    <div class="loader">
+        <img src="./assets/img/loader.gif">
+    </div>
+    
+    <!--animation background cercles--> 
+    <ul class="circles">
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>     
+    
+    <!-- main area -->
+    <div class="main main-raised">
+       
+        <div class="container-fluid">
+          
+            <!-- figures -->
+            <div class="row" id="figures">
+               
+                <!-- local figures -->
+                <div class="col-xl-3 col-lg-6 col-md-12 order-1 local">
+                    <div class="card card-area container-fluid mt-4 mb-1 wow rotateInDownLeft" data-wow-duration="2s">
+                        
+                        <div class="card-header figure-heding">
+                            <div class="row">
+                                <h4 id="show">Total Figures (SL)</h4>
+                            </div>
+                        </div>
+                        
+                        <div class="row card-row">
+                            <div class="card-col col-xl-6 col-sm-4">
+                                <div class="card card-stats one">
+                                    <div class="card-body">
+                                        <div class="details d-flex">
+                                            <div class="card-icon one">
+                                                <i class="fas fa-clipboard-list"></i>
+                                            </div>
+                                            <h3 class="card-title" id="total-cases"></h3>
+                                        </div>
+                                    </div>
+                                    <div class="card-footer">
+                                        <p class="card-category">Confirmed</p>
+                                    </div>
+                                </div>    
+                            </div>
+
+                            <div class="card-col col-xl-6 col-sm-4">
+                                <div class="card card-stats one">
+                                    <div class="card-body">
+                                        <div class="details d-flex">
+                                            <div class="card-icon one">
+                                                <i class="fas fa-procedures"></i>
+                                            </div>
+                                            <h3 class="card-title" id="active-cases"></h3>
+                                        </div>
+                                    </div>
+                                    <div class="card-footer">
+                                        <p class="card-category">Active</p>
+                                    </div>
+                                </div>    
+                            </div>
+                            
+                            <div class="card-col col-xl-6 col-sm-4">
+                                <div class="card card-stats one">
+                                    <div class="card-body">
+                                        <div class="details d-flex">
+                                            <div class="card-icon one">
+                                                <i class="fas fa-ambulance"></i>
+                                            </div>
+                                            <h3 class="card-title" id="new-cases"></h3>
+                                        </div>
+                                    </div>
+                                    <div class="card-footer">
+                                        <p class="card-category">New</p>
+                                    </div>
+                                </div>    
+                            </div>
+
+                            <div class="card-col col-xl-6 col-sm-4">
+                                <div class="card card-stats one">
+                                    <div class="card-body">
+                                        <div class="details d-flex">
+                                            <div class="card-icon one">
+                                                <i class="fas fa-heart-broken"></i>
+                                            </div>
+                                            <h3 class="card-title" id="deaths"></h3>
+                                        </div>
+                                    </div>
+                                    <div class="card-footer">
+                                        <p class="card-category">Deaths</p>
+                                    </div>
+                                </div>    
+                            </div>
+                            
+                            <div class="card-col col-xl-6 col-sm-4">
+                                <div class="card card-stats three">
+                                    <div class="card-body">
+                                        <div class="details d-flex">
+                                            <div class="card-icon three">
+                                                <i class="fas fa-clinic-medical"></i>
+                                            </div>
+                                            <h3 class="card-title" id="suspected"></h3>
+                                        </div>
+                                    </div>
+                                    <div class="card-footer">
+                                        <p class="card-category">Suspected</p>
+                                    </div>
+                                </div>    
+                            </div>
+
+                            <div class="card-col col-xl-6 col-sm-4">
+                                <div class="card card-stats two">
+                                    <div class="card-body">
+                                        <div class="details d-flex">
+                                            <div class="card-icon two">
+                                                <i class="fas fa-hand-holding-heart"></i>
+                                            </div>
+                                            <h3 class="card-title" id="recovered"></h3>
+                                        </div>
+                                    </div>
+                                    <div class="card-footer">
+                                        <p class="card-category">Recovered</p>
+                                    </div>
+                                </div>    
+                            </div>
+                        </div>
+                        
+                        <div class="card-footer time-footer">
+                            <div class="row update-time">
+                                <p class="card-category">
+                                    Last time update on <span id="update-local-date"></span> at <span id="update-local-time"></span>
+                                </p>
+                            </div>
+                        </div>
+
+                    </div> 
+                </div>
+                
+                <!-- local timeline chart figures -->
+                <div class="col-md-6 order-xl-2 order-3 chart-local-timeline">
+                    <div class="card card-area card-chart container-fluid mt-4 mb-1 wow zoomIn" data-wow-duration="2s">
+                        <div class="card-header figure-heding">
+                            <div class="row">
+                                <h4>Daily Cases (SL)</h4>
+                            </div>
+                        </div>
+                        <div class="card-body chart-body one">
+                            <canvas id="chart-timeline" class="chart-timeline"></canvas>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- global figures -->
+                <div class="col-xl-3 col-lg-6 col-md-12  order-xl-3 order-2 global">
+                    <div class="card card-area container-fluid mt-4 mb-1 wow rotateInDownRight" data-wow-duration="2s">
+                        
+                        <div class="card-header figure-heding">
+                            <div class="row">
+                                <h4>Total Figures (GLOBAL)</h4>
+                            </div>
+                        </div>
+                        
+                        <div class="row card-row">
+                            <div class="card-col col-xl-6 col-sm-4">
+                                <div class="card card-stats one">
+                                    <div class="card-body">
+                                        <div class="details d-flex">
+                                            <div class="card-icon one">
+                                                <i class="fas fa-clipboard-list"></i>
+                                            </div>
+                                            <h3 class="card-title" id="global-total"></h3>
+                                        </div>
+                                    </div>
+                                    <div class="card-footer">
+                                        <p class="card-category">Confirmed</p>
+                                    </div>
+                                </div>    
+                            </div>
+
+                            <div class="card-col col-xl-6 col-sm-4">
+                                <div class="card card-stats one">
+                                    <div class="card-body">
+                                        <div class="details d-flex">
+                                            <div class="card-icon one">
+                                                <i class="fas fa-procedures"></i>
+                                            </div>
+                                            <h3 class="card-title" id="global-active"></h3>
+                                        </div>
+                                    </div>
+                                    <div class="card-footer">
+                                        <p class="card-category">Active</p>
+                                    </div>
+                                </div>    
+                            </div>
+                            
+                            <div class="card-col col-xl-6 col-sm-4">
+                                <div class="card card-stats one">
+                                    <div class="card-body">
+                                        <div class="details d-flex">
+                                            <div class="card-icon one">
+                                                <i class="fas fa-ambulance"></i>
+                                            </div>
+                                            <h3 class="card-title" id="global-new"></h3>
+                                        </div>
+                                    </div>
+                                    <div class="card-footer">
+                                        <p class="card-category">New</p>
+                                    </div>
+                                </div>    
+                            </div>
+                           
+                            <div class="card-col col-xl-6 col-sm-4">
+                                <div class="card card-stats two">
+                                    <div class="card-body">
+                                        <div class="details d-flex">
+                                            <div class="card-icon two">
+                                                <i class="fas fa-hand-holding-heart"></i>
+                                            </div>
+                                            <h3 class="card-title" id="global-recovered"></h3>
+                                        </div>
+                                    </div>
+                                    <div class="card-footer">
+                                        <p class="card-category">Recovered</p>
+                                    </div>
+                                </div>    
+                            </div>
+                            
+                            <div class="card-col col-xl-6 col-sm-4">
+                                <div class="card card-stats one">
+                                    <div class="card-body">
+                                        <div class="details d-flex">
+                                            <div class="card-icon one">
+                                                <i class="fas fa-heart-broken"></i>
+                                            </div>
+                                            <h3 class="card-title" id="global-deaths"></h3>
+                                        </div>
+                                    </div>
+                                    <div class="card-footer">
+                                        <p class="card-category">Deaths</p>
+                                    </div>
+                                </div>    
+                            </div>
+                            
+                            <div class="card-col col-xl-6 col-sm-4">
+                                <div class="card card-stats one">
+                                    <div class="card-body">
+                                        <div class="details d-flex">
+                                            <div class="card-icon one">
+                                                <i class="fas fa-heart-broken"></i>
+                                            </div>
+                                            <h3 class="card-title" id="global-new-deaths"></h3>
+                                        </div>
+                                    </div>
+                                    <div class="card-footer">
+                                        <p class="card-category">New Deaths</p>
+                                    </div>
+                                </div>    
+                            </div>
+                        </div>
+                        
+                        <div class="card-footer time-footer">
+                            <div class="row update-time">
+                                <p class="card-category">
+                                    Last time update on <span id="update-global-date"></span> at <span id="update-global-time"></span>
+                                </p>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                
+                <!-- daily recoveries and breakdown of total Cases -->
+                <div class="col-xl-3 col-md-6 order-5 order-xl-4">
+                    <!-- daily recoveries -->
+                    <div class="recovery">
+                        <div class="card card-area card-chart container-fluid mt-4 mb-1 wow fadeInLeft" data-wow-duration="2s">
+                            <div class="card-header figure-heding">
+                                <div class="row">
+                                    <h4>Daily Recoveries (SL)</h4>
+                                </div>
+                            </div>
+                            <div class="card-body chart-body two">
+                                <canvas id="chart-recovery" class="line-chart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- breakdown of total Cases -->
+                    <div class="all-total">
+                        <div class="card card-area card-chart container-fluid mt-4 mb-1 wow fadeInLeft" data-wow-duration="2s">
+                            <div class="card-header figure-heding">
+                                <div class="row">
+                                    <h4>Breakdown of Total Cases (SL)</h4>
+                                </div>
+                            </div>
+                            <div class="card-body chart-body nine">
+                                <canvas id="chart-breakdown" class="line-chart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- total vs active -->
+                <div class="col-xl-6 col-md-6 order-4 order-xl-5 chart-total-vs-active">
+                   
+                    <div class="card card-area card-chart container-fluid mt-4 mb-1 wow zoomIn" data-wow-duration="2s">
+                        <div class="card-header figure-heding">
+                            <div class="row">
+                                <h4>Total Vs Active Cases (SL)</h4>
+                            </div>
+                        </div>
+                        <div class="card-body chart-body eighth">
+                            <canvas id="chart-totalVSactive" class="line-chart"></canvas>
+                        </div>
+                    </div>
+                    
+                </div>
+                
+                <!-- total and braekdown in global -->
+                <div class="col-xl-3 col-md-6 order-6">
+
+                    <!-- global total -->
+                    <div class="global-total">
+                        <div class="card card-area card-chart container-fluid mt-4 mb-1 wow fadeInRight" data-wow-duration="2s">
+                            <div class="card-header figure-heding">
+                                <div class="row">
+                                    <h4>Total Cases Growth (GLOBAL)</h4>
+                                </div>
+                            </div>
+                            <div class="card-body chart-body three">
+                                <canvas id="chart-global-total" class="line-chart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- breakdown of global -->
+                    <div class="breakdown-global">
+                        <div class="card card-area card-chart container-fluid mt-4 mb-1 wow fadeInRight" data-wow-duration="2s">
+                            <div class="card-header figure-heding">
+                                <div class="row">
+                                    <h4>Breakdown of Total Cases (GLOBAL)</h4>
+                                </div>
+                            </div>
+                            <div class="card-body chart-body nine">
+                                <canvas id="chart-global-breakdown" class="line-chart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                
+            </div>
+            
+            <!-- hospitals -->
+            <div class="hospital" id="HospitalData">
+                
+                <div class="col-xl-12 col-md-12 local-hospital">
+
+                    <div class="card card-area container-fluid mt-4 mb-1 wow fadeInUp" data-wow-duration="2s">
+                        
+                        <div class="card-header figure-heding">
+                            <div class="row">
+                                <h4>data by Hospitals (SL)</h4>
+                            </div>
+                               
+                            <div class="row">
+                                <div class="select-hospital">
+                                    <form action="" method="POST">
+                                        <select class="form-control custom-select" id="hSelect" name="hSelect">
+                                            <option value="" disabled selected>select the hospital</option>
+                                            <option value="0">National Institute of Infectious Diseases</option>
+                                            <option value="1">National Hospital Sri Lanka</option>
+                                            <option value="2">Teaching Hospital - Ragama</option>
+                                            <option value="3">Teaching Hospital - Karapitiya</option>
+                                            <option value="4">Teaching Hospital - Anuradhapura</option>
+                                            <option value="5">Teaching Hospital - Kurunegala</option>
+                                            <option value="6">Teaching Hospital - Jaffna</option>
+                                            <option value="7">National Hospital Kandy</option>
+                                            <option value="8">Teaching Hospital - Batticaloa</option>
+                                            <option value="9">District General Hospital - Gampaha</option>
+                                            <option value="10">District General Hospital - Negombo</option>
+                                            <option value="11">Teaching Hospital - Rathnapura</option>
+                                            <option value="12">Provincial General Hospital - Badulla</option>
+                                            <option value="13">Lady Ridgeway Hospital</option>
+                                            <option value="14">De Soysa Hospital for Women</option>
+                                            <option value="15">District General Hospital - Polonnaruwa</option>
+                                            <option value="16">Teaching Hospital - Kalubowila</option>
+                                            <option value="17">Castle Street Teaching Hospital</option>
+                                            <option value="18">Base Hospital- Hambantota</option>
+                                            <option value="19">Base Hospital - Monaragala</option>
+                                            <option value="20">Base Hospital - Welikanda</option>
+                                            <option value="21">District General Hospital - Kalutara</option>
+                                            <option value="22">Chest Hospital Welisara</option>
+                                            <option value="23">Base Hospital - Mulleriyawa</option>
+                                            <option value="24">Base Hospital - Homagama</option>
+                                            <option value="25">Dr. Nevil Fernando Hospital</option>
+                                            <option value="26">District General Hospital - Chillaw</option>
+                                            <option value="27">District General Hospital - Matara</option>
+                                            <option value="28">K.D.U. Hospital</option>
+                                            <option value="29">District General Hospital - Vavunia</option>
+                                            <option value="30">Base Hospital - Marawila</option>
+                                            <option value="31">Teaching Hospital - Sri Jayawadhanapura</option>
+                                            <option value="32">Base Hospital - Beruwala</option>
+                                        </select>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="row card-row">
+                            <div class="card-col col-xl-12 col-lg-12">
+                                <div class="card card-stats hospital-name-uptime seven">
+                                    <div class="card-footer d-flex">
+                                        <p class="card-category hname hide" id="hName">
+                                            Last time update on $$__Data__$$ at $$__time__$$
+                                        </p>
+                                    </div>
+                                </div>    
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="card-col col-xl-3 col-lg-3 col-md-6 col-sm-12">
+                                <div class="card card-stats seven">
+                                    <div class="card-body">
+                                        <div class="details d-flex">
+                                            <div class="card-icon seven">
+                                                <i class="fas fa-walking"></i>
+                                            </div>
+                                            <h3 class="card-title" id="hTotalSL">
+                                            </h3>
+                                        </div>
+                                    </div>
+                                    <div class="card-footer">
+                                        <p class="card-category">Total number of Sri Lankans <br> who have been treated</p>
+                                    </div>
+                                </div>    
+                            </div>
+
+                            <div class="card-col col-xl-3 col-lg-3 col-md-6 col-sm-12">
+                                <div class="card card-stats seven">
+                                    <div class="card-body">
+                                        <div class="details d-flex">
+                                            <div class="card-icon seven">
+                                                <i class="fas fa-plane"></i>
+                                            </div>
+                                            <h3 class="card-title" id="hTotalFR"></h3>
+                                        </div>
+                                    </div>
+                                    <div class="card-footer">
+                                        <p class="card-category">Total number of foreigners <br> who have been treated</p>
+                                    </div>
+                                </div>    
+                            </div>
+                        
+                            <div class="card-col col-xl-3 col-lg-3 col-md-6 col-sm-12">
+                                <div class="card card-stats seven">
+                                    <div class="card-body">
+                                        <div class="details d-flex">
+                                            <div class="card-icon seven">
+                                                <i class="fas fa-bed"></i>
+                                            </div>
+                                            <h3 class="card-title" id="hTotalSLC"></h3>
+                                        </div>
+                                    </div>
+                                    <div class="card-footer">
+                                        <p class="card-category">Total number of Sri Lankans <br> who are currently on treatment</p>
+                                    </div>
+                                </div>    
+                            </div>
+
+                            <div class="card-col col-xl-3 col-lg-3 col-md-6 col-sm-12">
+                                <div class="card card-stats seven">
+                                    <div class="card-body">
+                                        <div class="details d-flex">
+                                            <div class="card-icon seven">
+                                                <i class="fas fa-bed"></i>
+                                            </div>
+                                            <h3 class="card-title" id="hTotalFRC"></h3>
+                                        </div>
+                                    </div>
+                                    <div class="card-footer">
+                                        <p class="card-category">Total number of foreigners <br> who are currently on treatmen</p>
+                                    </div>
+                                </div>    
+                            </div>
+                        </div>
+
+                    </div>
+                    
+                </div>        
+                
+            </div>
+            
+        </div>
+    
+    </div>
+  
+  
+    <footer class="footer" id="footer">
+        <div class="container-fluid">
+            <div class="copyright float-right">
+                &copy;
+                <script>
+                    document.write(new Date().getFullYear())
+                </script>, made by Ashen Udithamal.
+                <a href="https://www.linkedin.com/in/ashenud/" target="_blank">
+                    <i class="fab fa-linkedin"></i>
+                </a>
+                <a href="https://facebook.com/ashen.lk" target="_blank">
+                    <i class="fab fa-facebook-square"></i>
+                </a>
+                <a href="https://twitter.com/ashen_ud" target="_blank">
+                    <i class="fab fa-twitter-square"></i>
+                </a>
+                <a href="https://www.instagram.com/ashen_ud/" target="_blank">
+                    <i class="fab fa-instagram-square"></i>
+                </a>
+            </div>
+            
+            <div class="copyright api float-left">
+                Local Information Source(API) - 
+                <a href="https://www.hpb.health.gov.lk/en" target="_blank">
+                    Health Promotion Bureau - Sri Lanka
+                </a>
+            </div>
+        </div>
+    </footer>
+  
+  
+  
+    <!--   Core JS Files   -->
+    <script type="text/javascript" src="./assets/js/core/jquery.min.js"></script>
+    <script type="text/javascript" src="./assets/js/core/popper.min.js"></script>
+    <script type="text/javascript" src="./assets/js/core/bootstrap-material-design.min.js"></script>
+    <script type="text/javascript" src="./assets/js/core/bootstrap.min.js"></script>
+    <script type="text/javascript" src="./assets/js/plugins/moment.min.js"></script>
+    <script type="text/javascript" src="./assets/js/jquery.waypoints.min.js"></script>
+    <script type="text/javascript" src="./assets/js/jquery.counterup.min.js"></script>
+    <script type="text/javascript" src="./assets/js/charts/Chart.js"></script>
+    <script type="text/javascript" src="./assets/js/wow.min.js"></script>
+
+    <script type="text/javascript" src="./assets/js/for-navbar.js"></script>
+    <script type="text/javascript" src="./assets/js/mdb.min.js"></script>
+    <script type="text/javascript" src="./assets/js/api-data.js"></script>
+    <script type="text/javascript" src="./assets/js/chart-data.js"></script>
+  
+    <!-- activate wow -->
+    <script>
+      if ($(window).width() <= 1200){ 
+          $(".wow").addClass('zoomIn').removeClass('rotateInDownLeft');
+          $(".wow").addClass('zoomIn').removeClass('rotateInDownRight');
+          $(".wow").addClass('zoomIn').removeClass('fadeInLeft');
+          $(".wow").addClass('zoomIn').removeClass('fadeInRight');
+      }
+
+      new WOW().init();
+    </script>
+  
+    <!-- counting up -->
+    <script>
+        jQuery(document).ready(function() {
+            $('.counter').counterUp({
+                delay: 10,
+                time: 1000
+            });
+        });
+    </script>
+    
+    <!-- Smooth scroll -->
+	<script>
+	    $('.js-scroll-trigger').click(function() {
+	        $('.navbar-collapse').collapse('hide');
+	    });
+	</script>
+	
+	<!-- loading area hide -->
+	<script>
+	    window.addEventListener("load", function () {
+	       const loader = document.querySelector(".loader");
+	       loader.className += " hidden"; // class "loader hidden"
+	    });
+	</script>
+	
+    <!-- footer in small device -->
+    <script>
+        if ($(window).width() <= 640){ 
+            $(".copyright").removeClass('float-right');
+            $(".api").removeClass('float-left');
+        }
+    </script>
+	
+  
+</body>
+
+</html>

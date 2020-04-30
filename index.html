@@ -404,14 +404,14 @@
                         <div class="card-header figure-heding">
                             <div class="row">
                                 <h4 class="hedding-sinhala">දිස්ත්‍රික්ක අතර බෙදීයාම (දේශීය)</h4>
-                                <div class="custom-control custom-switch map-type-switch">
+                                <div class="custom-control custom-switch map-type-switch d-none">
                                     <input type="checkbox" class="custom-control-input" id="customSwitch1">
                                     <label class="custom-control-label" for="customSwitch1">Animated/Static</label>
                                 </div>
                             </div>
                         </div>
                         <div class="card-body chart-body">
-                            <div id='map' class="eighth map-si"></div>
+                            <div id='map' class="one map-si"></div>
                             <!--<div class="map-overlay-container">
                                 <div class="map-overlay">
                                     <h2 id="location-title"></h2>
@@ -423,22 +423,6 @@
                         
                     </div>
                 </div>
-                
-                
-                <!--<div class="col-xl-6 col-md-6 order-4 order-xl-5 map-district-distribution">
-                   
-                    <div class="card card-area card-map container-fluid mt-4 mb-1 wow zoomIn" data-wow-duration="2s">
-                        <div class="card-header figure-heding">
-                            <div class="row">
-                                <h4 class="hedding-sinhala">දිස්ත්‍රික්ක අතර බෙදීයාම (දේශීය)</h4>
-                            </div>
-                        </div>
-                        <div class="card-body map-body">
-                            <div id='map' class="eighth" style='width: 660px; height: 620px;'></div>
-                        </div>
-                    </div>
-                    
-                </div>-->
                 
                 <!-- total and braekdown and New Cases vs. New Recoveries in global -->
                 <div class="col-xl-3 col-md-6 order-6">
@@ -656,11 +640,20 @@
                 </a>
             </div>
             
-            <div class="copyright api float-left normal-sinhala fontsize1-si">
-                දේශීය තොරතුරු මූලශ්‍රය(API) -  
-                <a class="normal-sinhala" href="https://www.hpb.health.gov.lk/en" target="_blank">
-                     සෞඛ්‍ය ප්‍රවර්ධන කාර්යාංශය - ශ්‍රී ලංකාව
-                </a>
+            <div class="data-sources float-left">
+                <div class="copyright api normal-sinhala fontsize1-si">
+                    දේශීය තොරතුරු මූලශ්‍රය(API) -  
+                    <a class="normal-sinhala" href="https://www.hpb.health.gov.lk/en" target="_blank">
+                         සෞඛ්‍ය ප්‍රවර්ධන කාර්යාංශය - ශ්‍රී ලංකාව
+                    </a>
+                </div>
+
+                <div class="copyright api normal-sinhala fontsize1-si">
+                    ගෝලීය තොරතුරු මූලශ්‍රය(API) -  
+                    <a class="normal-sinhala" href="https://about-corona.net/" target="_blank">
+                         about-corona.net
+                    </a>
+                </div>
             </div>
         </div>
     </footer>
@@ -728,7 +721,7 @@
     <script>
         if ($(window).width() <= 640){ 
             $(".copyright").removeClass('float-right');
-            $(".api").removeClass('float-left');
+            $(".data-sources").removeClass('float-left');
         }
     </script>
 	

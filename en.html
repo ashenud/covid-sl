@@ -404,14 +404,14 @@
                         <div class="card-header figure-heding">
                             <div class="row">
                                 <h4>District Distribution (SL)</h4>
-                                <div class="custom-control custom-switch map-type-switch">
+                                <div class="custom-control custom-switch map-type-switch d-none">
                                     <input type="checkbox" class="custom-control-input" id="customSwitch1">
                                     <label class="custom-control-label" for="customSwitch1">Animated/Static</label>
                                 </div>
                             </div>
                         </div>
                         <div class="card-body chart-body">
-                            <div id='map' class="eighth map-en"></div>
+                            <div id='map' class="one map-en"></div>
                             <!--<div class="map-overlay-container">
                                 <div class="map-overlay">
                                     <h2 id="location-title"></h2>
@@ -640,12 +640,21 @@
                 </a>
             </div>
             
-            <div class="copyright api float-left">
-                Local Information Source(API) - 
-                <a href="https://www.hpb.health.gov.lk/en" target="_blank">
-                    Health Promotion Bureau - Sri Lanka
-                </a>
-            </div>
+            <div class="data-sources float-left">
+                <div class="copyright api float-left">
+                    Local Information Source(API) -
+                    <a href="https://www.hpb.health.gov.lk/en" target="_blank">
+                        Health Promotion Bureau - Sri Lanka
+                    </a>
+                </div>
+                
+                <div class="copyright api float-left">
+                    Global Information Source(API) -
+                    <a href="https://about-corona.net/" target="_blank">
+                        about-corona.net
+                    </a>
+                </div>
+            </div>            
         </div>
     </footer>
   

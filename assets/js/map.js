@@ -95,8 +95,8 @@ $(document).ready(function () {
 
             var map = new mapboxgl.Map({
                 container: 'map',
-                style: 'mapbox://styles/ashenud/ck9lulkm62x0l1irzqu1pedgy',
-                center: [80.6715, 7.8],
+                style: 'mapbox://styles/ashenud/ck9n0r7ws2ih31ipd3q8dtjln',
+                center: [80.6715, 7.9],
                 zoom: 6.7
             });
 
@@ -135,14 +135,14 @@ $(document).ready(function () {
                             'match',
                             ['get', 'type'],
                             'dist',
-                            '#ffbb33',
+                            'rgba(252, 197, 197,0.8)',
                             'qc',
-                            '#ffbb33',
+                            'rgba(255, 236, 197,0.8)',
                             'uns',
-                            '#2bbbad',
-                            '#33b5e5'
+                            'rgba(197, 255, 249,0.8)',
+                            'rgba(179, 214, 227,0.8)'
                         ],
-                        'circle-radius': 15
+                        'circle-radius': 17
                     }
                 });
 
@@ -160,14 +160,14 @@ $(document).ready(function () {
                                 'match',
                                 ['get', 'type'],
                                 'dist',
-                                '#ff4444',
+                                '#ff4040',
                                 'qc',
-                                '#ffbb33',
+                                '#ff6969',
                                 'uns',
-                                '#2bbbad',
+                                '#ff6969',
                                 '#33b5e5'
                         ],
-                        'circle-radius':13
+                        'circle-radius':14
                     }
                 });
 
@@ -197,9 +197,9 @@ $(document).ready(function () {
                         
                     if (lang == "si") {
                         
-                        District = e.features[0].properties.DistrictSin;
+                        District = '<p class="map-font-si">'+e.features[0].properties.DistrictSin + '</p>';
                     }else{
-                        District = e.features[0].properties.DistrictEn;
+                        District = '<p class="map-font-en">'+e.features[0].properties.DistrictEn+ '</p>';
                     }
 
                     console.log(lang);

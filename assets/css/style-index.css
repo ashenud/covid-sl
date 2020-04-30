@@ -455,12 +455,24 @@ body, html {
 
 /*-- Map area By samith --*/
 
-/*@media all and (max-width: 1199px) {
-    #map {
-        width: 300px !important;
-        height: 250px !important;
+@media all and (max-width: 1199px) {
+    #map.map-si, #map.map-en {
+        height: 250px;
     }
-}*/
+    #chart-timeline {
+        bottom: 40px;
+        position: absolute;
+    }
+    .chart-local-timeline .card-chart{
+        height: 312px;
+    }
+}
+
+@media all and (max-width: 400px) {
+    #map.map-si, #map.map-en {
+        height: 350px;
+    }
+}
 
 
 /*-- colors --*/

@@ -351,7 +351,7 @@ body, html {
 }
 
 
-/*-- map --*/
+/*-- map area --*/
 .card-map {
     box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
     border-radius: 2px;
@@ -372,6 +372,58 @@ body, html {
 #map .mapboxgl-ctrl-bottom-right{
     display: none;
 }
+
+/*-- Error UI By samith --*/
+
+.error-state-ui-outer{
+    min-height: 750px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.error-state-ui{
+    width: 100%;
+    text-align: center;
+    color: #fff;
+}
+
+.error-state-ui-outer .error-image {
+    max-width: 200px;
+    padding-bottom: 20px;
+}
+.error-state-ui-outer .error-title {
+    font-size: 1.8rem;
+}
+.error-state-ui-outer .error-description{
+    font-size: 1rem;
+}
+/*-- Error UI By samith --*/
+/*-- Map area By samith --*/
+#map-wrapper .map-type-switch{
+    margin-left: auto;
+    order: 2;
+    margin-right: 15px;
+    color: rgba(255, 255, 255, .6);
+}
+
+#map-wrapper .map-type-switch .custom-control-label {
+    font-size: 0.9rem;
+    line-height: 1.2;
+}
+
+#map-wrapper .map-type-switch .custom-control-label::before {
+    top: 0.09rem;
+}
+
+#map-wrapper .map-type-switch .custom-control-label::after {
+    top: calc(.09rem + 2px);
+}
+
+#map.map-si, #map.map-en{
+    width: 100%;
+    height:620px;
+}
+/*-- Map area By samith --*/
 
 /*@media all and (max-width: 1199px) {
     #map {
@@ -546,55 +598,3 @@ font-size: 0.85rem !important;
 
 
 
-/*-- Error UI By samith --*/
-
-.error-state-ui-outer{
-    min-height: 750px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-.error-state-ui{
-    width: 100%;
-    text-align: center;
-    color: #fff;
-}
-
-.error-state-ui-outer .error-image {
-    max-width: 200px;
-    padding-bottom: 20px;
-}
-.error-state-ui-outer .error-title {
-    font-size: 1.8rem;
-}
-.error-state-ui-outer .error-description{
-    font-size: 1rem;
-}
-/*-- Error UI By samith --*/
-/*-- Map area By samith --*/
-#map-wrapper .map-type-switch{
-    margin-left: auto;
-    order: 2;
-    margin-right: 15px;
-    color: rgba(255, 255, 255, .6);
-}
-
-#map-wrapper .map-type-switch .custom-control-label {
-    font-size: 0.9rem;
-    line-height: 1.2;
-}
-
-#map-wrapper .map-type-switch .custom-control-label::before {
-    top: 0.09rem;
-}
-
-#map-wrapper .map-type-switch .custom-control-label::after {
-    top: calc(.09rem + 2px);
-}
-
-#map{
-    width: 100%;
-    height:800px;
-}
-
-/*-- Map area By samith --*/

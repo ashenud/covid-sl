@@ -87,7 +87,7 @@ $(document).ready(function () {
                 container: 'map',
                 style: 'mapbox://styles/ashenud/ck9lulkm62x0l1irzqu1pedgy',
                 center: [80.6715, 7.8],
-                zoom: 7
+                zoom: 6.7
             });
 
 

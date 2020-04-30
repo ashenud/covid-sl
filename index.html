@@ -397,7 +397,34 @@
                 </div>
                 
                 <!-- map area -->
-                <div class="col-xl-6 col-md-6 order-4 order-xl-5 map-district-distribution">
+                <div class="col-xl-6 col-md-6 order-4 order-xl-5 map-district-distribution map">
+
+                    <div id="map-wrapper" class="card card-area card-map container-fluid mt-4 mb-1 wow zoomIn" data-wow-duration="2s">
+                        <div class="card-header figure-heding">
+                            <div class="row">
+                                <h4 class="hedding-sinhala">දිස්ත්‍රික්ක අතර බෙදීයාම (දේශීය)</h4>
+                                <div class="custom-control custom-switch map-type-switch">
+                                    <input type="checkbox" class="custom-control-input" id="customSwitch1">
+                                    <label class="custom-control-label" for="customSwitch1">Animated/Static</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-body chart-body">
+                            <div id='map' class="eighth map-si"></div>
+                            <!--<div class="map-overlay-container">
+                                <div class="map-overlay">
+                                    <h2 id="location-title"></h2>
+                                    <p id="location-description"></p>
+                                </div>
+                            </div>-->
+                        </div>
+
+                        
+                    </div>
+                </div>
+                
+                
+                <!--<div class="col-xl-6 col-md-6 order-4 order-xl-5 map-district-distribution">
                    
                     <div class="card card-area card-map container-fluid mt-4 mb-1 wow zoomIn" data-wow-duration="2s">
                         <div class="card-header figure-heding">
@@ -410,7 +437,7 @@
                         </div>
                     </div>
                     
-                </div>
+                </div>-->
                 
                 <!-- total and braekdown and New Cases vs. New Recoveries in global -->
                 <div class="col-xl-3 col-md-6 order-6">
@@ -649,6 +676,7 @@
     <script type="text/javascript" src="./assets/js/jquery.counterup.min.js"></script>
     <script type="text/javascript" src="./assets/js/charts/Chart.js"></script>
     <script type="text/javascript" src="./assets/js/wow.min.js"></script>
+    <script src="assets/js/plugins/papaparse.min.js"></script>
     
     <script src='https://api.mapbox.com/mapbox-gl-js/v1.8.1/mapbox-gl.js'></script>
     <script type="text/javascript" src="./assets/js/map.js"></script>

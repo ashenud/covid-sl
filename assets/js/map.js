@@ -1,6 +1,7 @@
 $(document).ready(function () {
     var mapSettings = {
-        districtData: "https://raw.githubusercontent.com/arimacdev/covid19-srilankan-data/master/Districts/districts_lk.csv",
+        //districtData: "https://raw.githubusercontent.com/arimacdev/covid19-srilankan-data/master/Districts/districts_lk.csv",
+        districtData: "data/district/patients-data.csv",
         MapBocToken: 'pk.eyJ1IjoiYXNoZW51ZCIsImEiOiJjazlsZG83ZDQwM2g0M2dxdTJ5OTQ4OHh1In0.j_bRFfw78u98EwF_pTaNWw',
     }
 
@@ -26,16 +27,19 @@ $(document).ready(function () {
             download: true,
             complete: function (results) {
                 var data = results.data;
-                data.shift();
-                buildFeaturesObj(data);
+
+                
+                /* data.shift();
+                */
+               buildFeaturesObj(data);
             }
         });
-
+        
         
     }
-
+    
     function buildFeaturesObj(csvData) {
-
+        
         var features = [];
 
         $.each(csvData, function (index, value) {
@@ -47,22 +51,32 @@ $(document).ready(function () {
                     "coordinates": []
                 }
             };
+            
+            /* console.log(value); */
 
             if (value[0] != null && value[1] != null && value[2] != null && value[3] != null) {
+                
 
-                featureOBJ.properties.District = value[0];
-                featureOBJ.geometry.coordinates.push(value[2]);
-                featureOBJ.geometry.coordinates.push(value[1]);
-                featureOBJ.properties.count = parseInt(value[3]);
+                console.log(typeof value[2]);
+                console.log(value[2]);
+                featureOBJ.properties.DistrictEn = value[0];
+                featureOBJ.properties.DistrictSin = value[1];
+                featureOBJ.properties.Cases = parseInt(value[2]);
+                featureOBJ.properties.Recovered = parseInt(value[3]);
+                featureOBJ.properties.Deaths = parseInt(value[4]);
+                
+                featureOBJ.geometry.coordinates.push(value[5]);
+                featureOBJ.geometry.coordinates.push(value[6]);
+                featureOBJ.properties.type = value[7];
     
                 features.push(featureOBJ)
             }
         });
-
+        
         drawStaticMap(features);
 
     }
-
+    
     function drawStaticMap(featuresObj) {
         
 
@@ -74,14 +88,12 @@ $(document).ready(function () {
                 'type': 'FeatureCollection',
             }
         };
-
-        mapData.data.features = featuresObj;
-
         
+        mapData.data.features = featuresObj;
+    
 
         mapboxgl.accessToken = mapSettings.MapBocToken;
 
-        
 
             var map = new mapboxgl.Map({
                 container: 'map',
@@ -98,14 +110,14 @@ $(document).ready(function () {
 
 
             // Remove zoom and rotation controls from the map.
-            map.removeControl(navigation);
+            /* map.removeControl(navigation);
             map.scrollZoom.disable();
             map.boxZoom.disable();
             map.dragRotate.disable();
             map.dragPan.disable();
             map.keyboard.disable();
             map.doubleClickZoom.disable();
-            map.touchZoomRotate.disable();
+            map.touchZoomRotate.disable(); */
 
 
             map.on('load', function () {
@@ -122,15 +134,17 @@ $(document).ready(function () {
                         //   * Yellow, 30px circles when point count is between 100 and 750
                         //   * Pink, 40px circles when point count is greater than or equal to 750
                         'circle-color': [
-                            'step',
-                            ['get', 'count'],
-                            '#51bbd6',
-                            20,
-                            '#f1f075',
-                            50,
-                            '#f28cb1'
+                                'match',
+                                ['get', 'type'],
+                                'dist',
+                                '#fbb03b',
+                                'qc',
+                                '#223b53',
+                                'uns',
+                                '#3bb2d0',
+                                '#fff'
                         ],
-                        'circle-radius':30
+                        'circle-radius':15
                     }
                 });
 
@@ -139,7 +153,7 @@ $(document).ready(function () {
                     type: 'symbol',
                     source: 'patients',
                     layout: {
-                        'text-field': ['get', 'count'],
+                        'text-field': ['get', 'Cases'],
                         'text-font': ['DIN Offc Pro Medium', 'Arial Unicode MS Bold'],
                         'text-size': 12
                     }

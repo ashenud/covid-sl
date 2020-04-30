@@ -237,7 +237,7 @@ $(document).ready(function () {
                 popup.remove();
             });
 
-           // playback(0, mapData, map);
+            playback(0, mapData, map);
 
 
         });

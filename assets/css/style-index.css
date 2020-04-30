@@ -242,9 +242,11 @@ body, html {
 
 .card-area .card-stats {
     background: none;
-    margin-top: 5px;
-    margin-bottom: 5px;
+    margin-top: 7px;
+    margin-bottom: 7px;
+    padding-top: 5px;
     padding-left: 5px;
+    padding-bottom: 5px;
 }
 
 .card-stats .card-body {
@@ -303,6 +305,7 @@ body, html {
 
 .update-time {
     padding: 0;
+    padding-bottom: 5px;
     margin: 0;
 }
 
@@ -336,16 +339,46 @@ body, html {
 }
 
 .chart-timeline {
-    max-height: 266px;
+    max-height: 313px;
 }
 
 .chart-timeline-si {
-    max-height: 274.5px;
+    max-height: 321px;
 }
 
 .zero-padding {
     padding: 0;
 }
+
+
+/*-- map --*/
+.card-map {
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
+    border-radius: 2px;
+    background: none;
+    margin-top: 4px;
+}
+
+.map-body {
+    background: none;
+    margin-bottom: 15px;
+    padding: 5px;
+    display: flex;
+    justify-content: center;
+    position: relative;
+}
+
+#map .mapboxgl-ctrl-bottom-left, 
+#map .mapboxgl-ctrl-bottom-right{
+    display: none;
+}
+
+/*@media all and (max-width: 1199px) {
+    #map {
+        width: 300px !important;
+        height: 250px !important;
+    }
+}*/
 
 
 /*-- colors --*/
@@ -407,6 +440,10 @@ body, html {
 
 .nine{
     box-shadow: 0 12px 20px -10px rgba(156,39,176,.4), 0 4px 20px 0 rgba(0,0,0,.12),0 7px 8px -5px rgba(76, 175, 80, 0.4);
+}
+
+.ten{
+    box-shadow: 0 12px 20px -10px rgba(244,67,54,.28),0 7px 8px -5px rgba(76, 175, 80, 0.4);
 }
 
 /*-- hospital area --*/
@@ -477,6 +514,10 @@ font-size: 0.7rem !important;
 
 .fontsize2-si {
 font-size: 0.65rem !important;
+}
+
+.fontsize3-si {
+font-size: 0.85rem !important;
 }
 
 

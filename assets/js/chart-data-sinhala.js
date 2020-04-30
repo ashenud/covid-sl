@@ -72,7 +72,7 @@ $(document).ready(function() {
                         ticks: {
                             beginAtZero: true,
                             stepSize: 5,                                
-                            fontColor: 'rgba(255, 255, 255, 0.7)',
+                            fontColor: 'rgba(255, 255, 255, 1)',
                             fontSize: 7,
                             padding: 5,
                         },
@@ -81,7 +81,7 @@ $(document).ready(function() {
                     xAxes: [{
                         barPercentage: 0.4,
                         ticks: {
-                            fontColor: 'rgba(255, 255, 255, 0.7)',
+                            fontColor: 'rgba(255, 255, 255, 1)',
                             fontSize: 11,
                             padding: 10,
                         },
@@ -138,7 +138,7 @@ $(document).ready(function() {
                         ticks: {
                             beginAtZero: true,
                             stepSize: 5,                                
-                            fontColor: 'rgba(255, 255, 255, 0.7)',
+                            fontColor: 'rgba(255, 255, 255, 1)',
                             fontSize: 7,
                             padding: 5,
                         },
@@ -147,7 +147,7 @@ $(document).ready(function() {
                     xAxes: [{
                         barPercentage: 0.4,
                         ticks: {
-                            fontColor: 'rgba(255, 255, 255, 0.7)',
+                            fontColor: 'rgba(255, 255, 255, 1)',
                             fontSize: 8,
                             padding: 10,
                             autoSkipPadding: 15,
@@ -247,8 +247,9 @@ $(document).ready(function() {
                         borderColor: 'rgba(0,188,212, 0.6)',
                         backgroundColor: 'rgba(0,188,212, 1)',
                         fill: false,
-                        borderWidth: 3,
-                        pointRadius: 0
+                        borderWidth: 2,
+                        pointRadius: 0,
+                        pointStyle: 'line',
                     },
                     {
                         label: 'සක්‍රීය',
@@ -256,8 +257,9 @@ $(document).ready(function() {
                         fill: false,
                         borderColor: 'rgba(156, 39, 176, 0.6)',
                         backgroundColor: 'rgba(156, 39, 176, 1)',
-                        borderWidth: 3,
-                        pointRadius: 0
+                        borderWidth: 2,
+                        pointRadius: 0,
+                        pointStyle: 'line',
                     }]
             },
             options: {
@@ -266,6 +268,7 @@ $(document).ready(function() {
                     labels: {
                         fontColor: '#fff',
                         fontSize: 11,
+                        usePointStyle: true,
                     }
                 },
                 scales: {
@@ -273,8 +276,8 @@ $(document).ready(function() {
                         type: 'linear',
                         ticks: {
                             beginAtZero: true,
-                            stepSize: 80,                                
-                            fontColor: 'rgba(255, 255, 255, 0.7)',
+                            stepSize: 150,                                
+                            fontColor: 'rgba(255, 255, 255, 1)',
                             fontSize: 7,
                             padding: 5,
                         },
@@ -282,7 +285,7 @@ $(document).ready(function() {
                     }],
                     xAxes: [{
                         ticks: {
-                            fontColor: 'rgba(255, 255, 255, 0.7)',
+                            fontColor: 'rgba(255, 255, 255, 1)',
                             fontSize: 9,
                             padding: 10,
                             autoSkipPadding: 15,
@@ -352,6 +355,9 @@ $(document).ready(function() {
 
         let global_date = [];
         let global_total = [];
+        let final_data = [];
+        let new_cases = [];
+        let new_recoveries = [];
 
         let y=2;
         let x=data2.data.length-y;
@@ -360,10 +366,9 @@ $(document).ready(function() {
         for (i = x; i >= 0; i--) {
             global_date.push(data2.data[i].date.substr(5,5));
             global_total.push(data2.data[i].confirmed);
+            new_cases.push(data2.data[i].new_confirmed);
+            new_recoveries.push(data2.data[i].new_recovered);
         }
-        
-        
-        let final_data = [];
         
         let final_active=data2.data[0].active;
         let final_deaths=data2.data[0].deaths;
@@ -403,7 +408,7 @@ $(document).ready(function() {
                         ticks: {
                             beginAtZero: true,
                             stepSize: 1000000,                                
-                            fontColor: 'rgba(255, 255, 255, 0.7)',
+                            fontColor: 'rgba(255, 255, 255, 1)',
                             fontSize: 8,
                             padding: 5,
                             callback: function (value, index, values) {
@@ -414,7 +419,7 @@ $(document).ready(function() {
                     }],
                     xAxes: [{
                         ticks: {
-                            fontColor: 'rgba(255, 255, 255, 0.7)',
+                            fontColor: 'rgba(255, 255, 255, 1)',
                             fontSize: 8,
                             padding: 10,
                             autoSkipPadding: 10,
@@ -507,6 +512,101 @@ $(document).ready(function() {
                 responsive: true
             }
         }
+        
+        var ChartNewVSrecoveries = {
+            type: 'line',
+            data: {
+                labels: global_date,
+                datasets: [{
+                        label: 'නව හඳුනාගැනීම්',
+                        data: new_cases,
+                        borderColor: '#f44336',
+                        backgroundColor: '#f44336',
+                        fill: false,
+                        borderWidth: 1,
+                        pointRadius: 0,
+                        pointStyle: 'line'
+                    },
+                    {
+                        label: 'නව සුවවීම්',
+                        data: new_recoveries,
+                        fill: false,
+                        borderColor: 'rgba(76, 175, 80, 1)',
+                        backgroundColor: 'rgba(76, 175, 80, 1)',
+                        borderWidth: 1,
+                        pointRadius: 0,
+                        pointStyle: 'line'
+                    }]
+            },
+            options: {
+                legend: {
+                    display: true,
+                    labels: {
+                        fontColor: '#fff',
+                        fontSize: 11,
+                        usePointStyle: true,
+                    }
+                },
+                scales: {
+                    yAxes: [{
+                        type: 'linear',
+                        ticks: {
+                            beginAtZero: true,
+                            stepSize: 20000,                                
+                            fontColor: 'rgba(255, 255, 255, 1)',
+                            fontSize: 8,
+                            padding: 5,
+                            callback: function (value, index, values) {
+                                return value / 1e3 + 'K';
+                            }
+                        },
+                        gridLines: false
+                    }],
+                    xAxes: [{
+                        ticks: {
+                            fontColor: 'rgba(255, 255, 255, 1)',
+                            fontSize: 10,
+                            padding: 10,
+                            autoSkipPadding: 15,
+                            maxRotation: 0
+                        },
+                        gridLines: false
+                    }]
+                },
+                tooltips: {
+                    mode: 'index',
+                    intersect: false,
+                    bodyFontSize: 10,
+                    callbacks: {
+                        // this callback is used to create the tooltip label
+                        label: function (tooltipItem, data) {
+                            // get the data label and data value to display
+                            // convert the data value to local string so it uses a comma seperated number
+                            var dataLabel = data.datasets[tooltipItem.datasetIndex].label;
+                            var value = ': ' + data.datasets[tooltipItem.datasetIndex].data[tooltipItem.index].toLocaleString();
+
+                            // make this isn't a multi-line label (e.g. [["label 1 - line 1, "line 2, ], [etc...]])
+                            if (Chart.helpers.isArray(dataLabel)) {
+                                // show value on first line of multiline label
+                                // need to clone because we are changing the value
+                                dataLabel = dataLabel.slice();
+                                dataLabel[0] += value;
+                            } else {
+                                dataLabel += value;
+                            }
+
+                            // return the text to display on the tooltip
+                            return dataLabel;
+                        }
+                    }
+                },
+                hover: {
+                    mode: 'index',
+                    intersect: false
+                },
+                responsive: true,
+            }
+        }
 
         var ctxGlobalTotal = document.getElementById('chart-global-total').getContext('2d');
         new Chart(ctxGlobalTotal, ChartGlobalTotal);
@@ -514,6 +614,8 @@ $(document).ready(function() {
         var ctxGlobalBreakdown = document.getElementById('chart-global-breakdown').getContext('2d');
         new Chart(ctxGlobalBreakdown, ChartGlobalBreakdown);
         
+        var ctxNewVSrecoveries = document.getElementById('chart-global-new-vs-recoveries').getContext('2d');
+        new Chart(ctxNewVSrecoveries, ChartNewVSrecoveries);
         });
     
         

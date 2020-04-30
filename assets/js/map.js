@@ -1,7 +1,9 @@
+
 $(document).ready(function () {
     var mapSettings = {
         //districtData: "https://raw.githubusercontent.com/arimacdev/covid19-srilankan-data/master/Districts/districts_lk.csv",
         districtData: "/data/district/patients-data.csv",
+        playbackLimit: 10,
         MapBocToken: 'pk.eyJ1IjoiYXNoZW51ZCIsImEiOiJjazlsZG83ZDQwM2g0M2dxdTJ5OTQ4OHh1In0.j_bRFfw78u98EwF_pTaNWw',
     }
 
@@ -28,55 +30,67 @@ $(document).ready(function () {
             complete: function (results) {
                 var data = results.data;
 
-                
+
                 /* data.shift();
                 */
-               buildFeaturesObj(data);
+                buildFeaturesObj(data);
             }
         });
-        
-        
+
+
     }
-    
+
     function buildFeaturesObj(csvData) {
-        
+
         var features = [];
 
         $.each(csvData, function (index, value) {
             var featureOBJ = {
                 "type": "Feature",
-                "properties": {},
+                "properties": {
+                    'camera': {
+                        center: [],
+                        bearing: -8.9,
+                        zoom: 11.68
+                    }
+                },
                 "geometry": {
                     "type": "Point",
                     "coordinates": []
                 }
             };
-            
+
             /* console.log(value); */
 
             if (value[0] != null && value[1] != null && value[2] != null && value[3] != null) {
-                
+
 
                 featureOBJ.properties.DistrictEn = value[0];
                 featureOBJ.properties.DistrictSin = value[1];
                 featureOBJ.properties.Cases = parseInt(value[2]);
+                featureOBJ.properties.index = index - 1;
                 featureOBJ.properties.Recovered = parseInt(value[3]);
                 featureOBJ.properties.Deaths = parseInt(value[4]);
-                
+
+                featureOBJ.properties.camera.center.push(value[5]);
+                featureOBJ.properties.camera.center.push(value[6]);
+
                 featureOBJ.geometry.coordinates.push(value[5]);
                 featureOBJ.geometry.coordinates.push(value[6]);
                 featureOBJ.properties.type = value[7];
-    
+
                 features.push(featureOBJ)
             }
         });
-        
+        features.shift();
         drawStaticMap(features);
 
+        console.log(features);
+
     }
-    
+
     function drawStaticMap(featuresObj) {
-        
+
 
         var mapData = {
             type: 'geojson',
@@ -86,145 +100,165 @@ $(document).ready(function () {
                 'type': 'FeatureCollection',
             }
         };
-        
+
         mapData.data.features = featuresObj;
-    
+
 
         mapboxgl.accessToken = mapSettings.MapBocToken;
 
 
-            var map = new mapboxgl.Map({
-                container: 'map',
-                style: 'mapbox://styles/ashenud/ck9n0r7ws2ih31ipd3q8dtjln',
-                center: [80.6715, 7.9],
-                zoom: 6.7
+        var map = new mapboxgl.Map({
+            container: 'map',
+            style: 'mapbox://styles/ashenud/ck9n0r7ws2ih31ipd3q8dtjln',
+            center: [80.6715, 7.9],
+            zoom: 6.7
+        });
+
+
+        // Define a new navigation control.
+        var navigation = new mapboxgl.NavigationControl();
+        // Add zoom and rotation controls to the map.
+        map.addControl(navigation);
+
+
+        // Remove zoom and rotation controls from the map.
+        map.removeControl(navigation);
+        map.scrollZoom.disable();
+        map.boxZoom.disable();
+        map.dragRotate.disable();
+        map.dragPan.disable();
+        map.keyboard.disable();
+        map.doubleClickZoom.disable();
+        map.touchZoomRotate.disable();
+
+
+        map.on('load', function () {
+            map.addSource('patients', mapData);
+
+            map.addLayer({
+                id: 'district-outer',
+                type: 'circle',
+                source: 'patients',
+                paint: {
+                    // Use step expressions (https://docs.mapbox.com/mapbox-gl-js/style-spec/#expressions-step)
+                    // with three steps to implement three types of circles:
+                    //   * Blue, 20px circles when point count is less than 100
+                    //   * Yellow, 30px circles when point count is between 100 and 750
+                    //   * Pink, 40px circles when point count is greater than or equal to 750
+                    'circle-color': [
+                        'match',
+                        ['get', 'type'],
+                        'dist',
+                        'rgba(252, 197, 197,0.8)',
+                        'qc',
+                        'rgba(255, 236, 197,0.8)',
+                        'uns',
+                        'rgba(197, 255, 249,0.8)',
+                        'rgba(179, 214, 227,0.8)'
+                    ],
+                    'circle-radius': 17
+                }
+            });
+
+            map.addLayer({
+                id: 'district',
+                type: 'circle',
+                source: 'patients',
+                paint: {
+                    // Use step expressions (https://docs.mapbox.com/mapbox-gl-js/style-spec/#expressions-step)
+                    // with three steps to implement three types of circles:
+                    //   * Blue, 20px circles when point count is less than 100
+                    //   * Yellow, 30px circles when point count is between 100 and 750
+                    //   * Pink, 40px circles when point count is greater than or equal to 750
+                    'circle-color': [
+                        'match',
+                        ['get', 'type'],
+                        'dist',
+                        '#ff4040',
+                        'qc',
+                        '#ff6969',
+                        'uns',
+                        '#ff6969',
+                        '#33b5e5'
+                    ],
+                    'circle-radius': 14
+                }
             });
 
 
-            // Define a new navigation control.
-            var navigation = new mapboxgl.NavigationControl();
-            // Add zoom and rotation controls to the map.
-            map.addControl(navigation);
-
-
-            // Remove zoom and rotation controls from the map.
-            map.removeControl(navigation);
-            map.scrollZoom.disable();
-            map.boxZoom.disable();
-            map.dragRotate.disable();
-            map.dragPan.disable();
-            map.keyboard.disable();
-            map.doubleClickZoom.disable();
-            map.touchZoomRotate.disable();
-
-
-            map.on('load', function () {
-                map.addSource('patients', mapData);
-
-                map.addLayer({
-                    id: 'district-outer',
-                    type: 'circle',
-                    source: 'patients',
-                    paint: {
-                        // Use step expressions (https://docs.mapbox.com/mapbox-gl-js/style-spec/#expressions-step)
-                        // with three steps to implement three types of circles:
-                        //   * Blue, 20px circles when point count is less than 100
-                        //   * Yellow, 30px circles when point count is between 100 and 750
-                        //   * Pink, 40px circles when point count is greater than or equal to 750
-                        'circle-color': [
-                            'match',
-                            ['get', 'type'],
-                            'dist',
-                            'rgba(252, 197, 197,0.8)',
-                            'qc',
-                            'rgba(255, 236, 197,0.8)',
-                            'uns',
-                            'rgba(197, 255, 249,0.8)',
-                            'rgba(179, 214, 227,0.8)'
-                        ],
-                        'circle-radius': 17
-                    }
-                });
-
-                map.addLayer({
-                    id: 'district',
-                    type: 'circle',
-                    source: 'patients',
-                    paint: {
-                        // Use step expressions (https://docs.mapbox.com/mapbox-gl-js/style-spec/#expressions-step)
-                        // with three steps to implement three types of circles:
-                        //   * Blue, 20px circles when point count is less than 100
-                        //   * Yellow, 30px circles when point count is between 100 and 750
-                        //   * Pink, 40px circles when point count is greater than or equal to 750
-                        'circle-color': [
-                                'match',
-                                ['get', 'type'],
-                                'dist',
-                                '#ff4040',
-                                'qc',
-                                '#ff6969',
-                                'uns',
-                                '#ff6969',
-                                '#33b5e5'
-                        ],
-                        'circle-radius':14
-                    }
-                });
-
-
-                map.addLayer({
-                    id: 'district-count',
-                    type: 'symbol',
-                    source: 'patients',
-                    layout: {
-                        'text-field': ['get', 'Cases'],
-                        'text-font': ['DIN Offc Pro Medium', 'Arial Unicode MS Bold'],
-                        'text-size': 12
-                    }
-                });
-               
-                var popup = new mapboxgl.Popup({
-                    closeButton: false,
-                    closeOnClick: false
-                });
-                
-                map.on('mouseenter', 'district', function (e) {
-                    // Change the cursor style as a UI indicator.
-                    map.getCanvas().style.cursor = 'pointer';
-                    
-                    var coordinates = e.features[0].geometry.coordinates.slice();
-                    var District;
-                        
-                    if (lang == "si") {
-                        
-                        District = '<p class="map-font-si">'+e.features[0].properties.DistrictSin + '</p>';
-                    }else{
-                        District = '<p class="map-font-en">'+e.features[0].properties.DistrictEn+ '</p>';
-                    }
-
-                    console.log(lang);
-                    // Ensure that if the map is zoomed out such that multiple
-                    // copies of the feature are visible, the popup appears
-                    // over the copy being pointed to.
-                    while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
-                        coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
-                    }
-                    
-                    // Populate the popup and set its coordinates
-                    // based on the feature found.
-                    popup
-                        .setLngLat(coordinates)
-                        .setHTML(District)
-                        .addTo(map);
-                });
-                
-                map.on('mouseleave', 'places', function() {
-                    map.getCanvas().style.cursor = '';
-                    popup.remove();
-                });
-                
+            map.addLayer({
+                id: 'district-count',
+                type: 'symbol',
+                source: 'patients',
+                layout: {
+                    'text-field': ['get', 'Cases'],
+                    'text-font': ['DIN Offc Pro Medium', 'Arial Unicode MS Bold'],
+                    'text-size': 12
+                }
             });
 
+            var popup = new mapboxgl.Popup({
+                closeButton: false,
+                closeOnClick: false
+            });
+
+            map.on('mouseenter', 'district', function (e) {
+                // Change the cursor style as a UI indicator.
+                map.getCanvas().style.cursor = 'pointer';
+
+                var coordinates = e.features[0].geometry.coordinates.slice();
+                var District;
+
+                if (lang == "si") {
+                    District = '<p class="map-font-si">' + e.features[0].properties.DistrictSin + '</p>';
+                } else {
+                    District = '<p class="map-font-en">' + e.features[0].properties.DistrictEn + '</p>';
+                }
+
+                console.log(lang);
+                // Ensure that if the map is zoomed out such that multiple
+                // copies of the feature are visible, the popup appears
+                // over the copy being pointed to.
+                while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
+                    coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
+                }
+
+                // Populate the popup and set its coordinates
+                // based on the feature found.
+
+                popup
+                    .setLngLat(coordinates)
+                    .setHTML(District)
+                    .addTo(map);
+            });
+
+            map.on('mouseleave', 'places', function () {
+                map.getCanvas().style.cursor = '';
+                popup.remove();
+            });
+
+           // playback(0, mapData, map);
+
+
+        });
+
+
+    }
+
+    function playback(index, mapData, map) {
+        // Animate the map position based on camera properties
+        var features = mapData.data.features;
+
+        map.flyTo(features[index].properties.camera);
+
+        map.once('moveend', function () {
+            // Duration the slide is on screen after interaction
+            window.setTimeout(function () {
+                // Increment index
+                index = index + 1 === mapSettings.playbackLimit ? 0 : index + 1;
+                playback(index, mapData, map);
+            }, 3000); // After callback, show the location for 3 seconds.
+        });
     }
 
     /* mapboxgl.accessToken = 'pk.eyJ1IjoiYXNoZW51ZCIsImEiOiJjazlsZG83ZDQwM2g0M2dxdTJ5OTQ4OHh1In0.j_bRFfw78u98EwF_pTaNWw';

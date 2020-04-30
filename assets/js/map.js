@@ -1,7 +1,7 @@
 $(document).ready(function () {
     var mapSettings = {
         //districtData: "https://raw.githubusercontent.com/arimacdev/covid19-srilankan-data/master/Districts/districts_lk.csv",
-        districtData: "data/district/patients-data.csv",
+        districtData: "/data/district/patients-data.csv",
         MapBocToken: 'pk.eyJ1IjoiYXNoZW51ZCIsImEiOiJjazlsZG83ZDQwM2g0M2dxdTJ5OTQ4OHh1In0.j_bRFfw78u98EwF_pTaNWw',
     }
 
@@ -57,8 +57,6 @@ $(document).ready(function () {
             if (value[0] != null && value[1] != null && value[2] != null && value[3] != null) {
                 
 
-                console.log(typeof value[2]);
-                console.log(value[2]);
                 featureOBJ.properties.DistrictEn = value[0];
                 featureOBJ.properties.DistrictSin = value[1];
                 featureOBJ.properties.Cases = parseInt(value[2]);
@@ -110,21 +108,46 @@ $(document).ready(function () {
 
 
             // Remove zoom and rotation controls from the map.
-            /* map.removeControl(navigation);
+            map.removeControl(navigation);
             map.scrollZoom.disable();
             map.boxZoom.disable();
             map.dragRotate.disable();
             map.dragPan.disable();
             map.keyboard.disable();
             map.doubleClickZoom.disable();
-            map.touchZoomRotate.disable(); */
+            map.touchZoomRotate.disable();
 
 
             map.on('load', function () {
                 map.addSource('patients', mapData);
 
                 map.addLayer({
-                    id: 'clusters',
+                    id: 'district-outer',
+                    type: 'circle',
+                    source: 'patients',
+                    paint: {
+                        // Use step expressions (https://docs.mapbox.com/mapbox-gl-js/style-spec/#expressions-step)
+                        // with three steps to implement three types of circles:
+                        //   * Blue, 20px circles when point count is less than 100
+                        //   * Yellow, 30px circles when point count is between 100 and 750
+                        //   * Pink, 40px circles when point count is greater than or equal to 750
+                        'circle-color': [
+                            'match',
+                            ['get', 'type'],
+                            'dist',
+                            '#ffbb33',
+                            'qc',
+                            '#ffbb33',
+                            'uns',
+                            '#2bbbad',
+                            '#33b5e5'
+                        ],
+                        'circle-radius': 15
+                    }
+                });
+
+                map.addLayer({
+                    id: 'district',
                     type: 'circle',
                     source: 'patients',
                     paint: {
@@ -137,19 +160,20 @@ $(document).ready(function () {
                                 'match',
                                 ['get', 'type'],
                                 'dist',
-                                '#fbb03b',
+                                '#ff4444',
                                 'qc',
-                                '#223b53',
+                                '#ffbb33',
                                 'uns',
-                                '#3bb2d0',
-                                '#fff'
+                                '#2bbbad',
+                                '#33b5e5'
                         ],
-                        'circle-radius':15
+                        'circle-radius':13
                     }
                 });
 
+
                 map.addLayer({
-                    id: 'cluster-count',
+                    id: 'district-count',
                     type: 'symbol',
                     source: 'patients',
                     layout: {
@@ -159,18 +183,45 @@ $(document).ready(function () {
                     }
                 });
                
-
-                /* map.addLayer({
-                    id: 'unclustered-point',
-                    type: 'circle',
-                    source: 'patients',
-                    paint: {
-                        'circle-color': '#000',
-                        'circle-radius': 20,
-                        'circle-stroke-width': 1,
-                        'circle-stroke-color': '#fff'
+                var popup = new mapboxgl.Popup({
+                    closeButton: false,
+                    closeOnClick: false
+                });
+                
+                map.on('mouseenter', 'district', function (e) {
+                    // Change the cursor style as a UI indicator.
+                    map.getCanvas().style.cursor = 'pointer';
+                    
+                    var coordinates = e.features[0].geometry.coordinates.slice();
+                    var District;
+                        
+                    if (lang == "si") {
+                        
+                        District = e.features[0].properties.DistrictSin;
+                    }else{
+                        District = e.features[0].properties.DistrictEn;
                     }
-                }); */
+
+                    console.log(lang);
+                    // Ensure that if the map is zoomed out such that multiple
+                    // copies of the feature are visible, the popup appears
+                    // over the copy being pointed to.
+                    while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
+                        coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
+                    }
+                    
+                    // Populate the popup and set its coordinates
+                    // based on the feature found.
+                    popup
+                        .setLngLat(coordinates)
+                        .setHTML(District)
+                        .addTo(map);
+                });
+                
+                map.on('mouseleave', 'places', function() {
+                    map.getCanvas().style.cursor = '';
+                    popup.remove();
+                });
                 
             });
 

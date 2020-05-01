@@ -1,6 +1,6 @@
 
 $(document).ready(function () {
-    var mapData, map;
+    var mapData, map , playMapAnimation = false;
     var mapSettings = {
         //districtData: "https://raw.githubusercontent.com/arimacdev/covid19-srilankan-data/master/Districts/districts_lk.csv",
         districtData: "/data/district/patients-data.csv",
@@ -244,9 +244,9 @@ $(document).ready(function () {
 
     }
 
-    function playback(action, index, mapData, map) {
+    function playback(index, mapData, map) {
 
-        if (action == "play"){
+        if (playMapAnimation){
 
             $("#animated-mapoverlaycontainer").fadeIn();
             // Animate the map position based on camera properties
@@ -269,9 +269,8 @@ $(document).ready(function () {
                     // Increment index
                     index = index + 1 === mapSettings.playbackLimit ? 0 : index + 1;
 
-                    if (action == "play") {
-                        console.log(action);
-                        playback(action, index, mapData, map);
+                    if (playMapAnimation) {
+                        playback( index, mapData, map );
                     }else{
                         resetCamera();
                     }
@@ -283,6 +282,7 @@ $(document).ready(function () {
     }
 
     function resetCamera() {
+        $("#animated-mapoverlaycontainer").fadeOut();
         map.flyTo({
             center: [80.6715, 7.9],
             zoom: 6.7,
@@ -292,16 +292,10 @@ $(document).ready(function () {
     }
 
     $('#map-switcher').change(function () {
-
         
-
-        if ($(this).prop('checked')){
-            console.log("play");
-            playback("play", 0, mapData, map);
-        }else{
-            console.log("pause");
-            playback("pause", 0, mapData, map);
-        }
+        playMapAnimation = $(this).prop('checked');
+        playback( 0, mapData, map );
+        
 
     })
 

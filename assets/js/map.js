@@ -107,17 +107,23 @@ $(document).ready(function () {
 
         mapboxgl.accessToken = mapSettings.MapBocToken;
 
+        var bounds = [
+            [-74.04728500751165, 40.68392799015035], // Southwest coordinates
+            [-73.91058699000139, 40.87764500765852] // Northeast coordinates
+        ];
+
 
         map = new mapboxgl.Map({
             container: 'map',
             style: 'mapbox://styles/ashenud/ck9n0r7ws2ih31ipd3q8dtjln',
             center: [80.6715, 7.9],
-            zoom: 6.7
+            zoom: 6.7,
+            maxBounds: bounds // Sets bounds as max
         });
 
 
         // Define a new navigation control.
-        var navigation = new mapboxgl.NavigationControl();
+       /*  var navigation = new mapboxgl.NavigationControl();
         // Add zoom and rotation controls to the map.
         map.addControl(navigation);
 
@@ -130,7 +136,7 @@ $(document).ready(function () {
         map.dragPan.disable();
         map.keyboard.disable();
         map.doubleClickZoom.disable();
-        map.touchZoomRotate.disable();
+        map.touchZoomRotate.disable(); */
 
 
         map.on('load', function () {

@@ -562,12 +562,13 @@ body, html {
 }
 #map-wrapper .map-overlay-container .map-overlay h2{
     color:rgba(255, 255, 255, .6);
-    font-size: 1rem;
+    font-size: 1.1rem;
+    font-weight: bold;
 }
 
 #map-wrapper .map-overlay-container .map-overlay p{
     color:rgba(255, 255, 255, .6);
-    font-size: 0.9rem;
+    font-size: 0.8rem;
 }
 
 /*-- Map area By samith --*/
@@ -617,10 +618,12 @@ body, html {
     }
     
     #map-wrapper .hedding-sinhala {
-        font-size: 0.6rem;
+        font-size: 0.7rem !important;
     }
     .map-type-switch.switch-wrapper label {
+        padding-top: 1px;
         font-size: 8px;
+        font-weight: 100;
     }
     
     #map.map-si, #map.map-en {

@@ -71,7 +71,7 @@ $(document).ready(function() {
                     yAxes: [{
                         ticks: {
                             beginAtZero: true,
-                            stepSize: 5,                                
+                            stepSize: 10,                                
                             fontColor: 'rgba(255, 255, 255, 1)',
                             fontSize: 7,
                             padding: 5,
@@ -84,6 +84,8 @@ $(document).ready(function() {
                             fontColor: 'rgba(255, 255, 255, 1)',
                             fontSize: 11,
                             padding: 10,
+                            autoSkipPadding: 15,
+                            maxRotation: 0 
                         },
                         gridLines: false
                     }]

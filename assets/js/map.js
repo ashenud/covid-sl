@@ -1,5 +1,6 @@
 
 $(document).ready(function () {
+    var mapData, map;
     var mapSettings = {
         //districtData: "https://raw.githubusercontent.com/arimacdev/covid19-srilankan-data/master/Districts/districts_lk.csv",
         districtData: "/data/district/patients-data.csv",
@@ -92,7 +93,7 @@ $(document).ready(function () {
     function drawStaticMap(featuresObj) {
 
 
-        var mapData = {
+        mapData = {
             type: 'geojson',
             // Point to GeoJSON data. This example visualizes all M1.0+ earthquakes
             // from 12/22/15 to 1/21/16 as logged by USGS' Earthquake hazards program.
@@ -107,7 +108,7 @@ $(document).ready(function () {
         mapboxgl.accessToken = mapSettings.MapBocToken;
 
 
-        var map = new mapboxgl.Map({
+        map = new mapboxgl.Map({
             container: 'map',
             style: 'mapbox://styles/ashenud/ck9n0r7ws2ih31ipd3q8dtjln',
             center: [80.6715, 7.9],
@@ -237,29 +238,72 @@ $(document).ready(function () {
                 popup.remove();
             });
 
-            playback(0, mapData, map);
-
 
         });
 
 
     }
 
-    function playback(index, mapData, map) {
-        // Animate the map position based on camera properties
-        var features = mapData.data.features;
+    function playback(action, index, mapData, map) {
 
-        map.flyTo(features[index].properties.camera);
+        if (action == "play"){
 
-        map.once('moveend', function () {
-            // Duration the slide is on screen after interaction
-            window.setTimeout(function () {
-                // Increment index
-                index = index + 1 === mapSettings.playbackLimit ? 0 : index + 1;
-                playback(index, mapData, map);
-            }, 3000); // After callback, show the location for 3 seconds.
+            $("#animated-mapoverlaycontainer").fadeIn();
+            // Animate the map position based on camera properties
+            var features = mapData.data.features;
+    
+            map.flyTo(features[index].properties.camera);
+    
+            if (lang == "si") {
+                $("#location-title").find("span").text(features[index].properties.DistrictSin);
+            } else {
+                $("#location-title").find("span").text(features[index].properties.DistrictEn);
+            }
+            
+            $("#location-description").find("span").text(features[index].properties.Cases);
+            
+    
+            map.once('moveend', function () {
+                // Duration the slide is on screen after interaction
+                window.setTimeout(function () {
+                    // Increment index
+                    index = index + 1 === mapSettings.playbackLimit ? 0 : index + 1;
+
+                    if (action == "play") {
+                        console.log(action);
+                        playback(action, index, mapData, map);
+                    }else{
+                        resetCamera();
+                    }
+                }, 3000); // After callback, show the location for 3 seconds.
+            });
+        }else{
+            resetCamera();
+        }
+    }
+
+    function resetCamera() {
+        map.flyTo({
+            center: [80.6715, 7.9],
+            zoom: 6.7,
+            pitch: 0,
+            bearing:0
         });
     }
+
+    $('#map-switcher').change(function () {
+
+        
+
+        if ($(this).prop('checked')){
+            console.log("play");
+            playback("play", 0, mapData, map);
+        }else{
+            console.log("pause");
+            playback("pause", 0, mapData, map);
+        }
+
+    })
 
     /* mapboxgl.accessToken = 'pk.eyJ1IjoiYXNoZW51ZCIsImEiOiJjazlsZG83ZDQwM2g0M2dxdTJ5OTQ4OHh1In0.j_bRFfw78u98EwF_pTaNWw';
     var map = new mapboxgl.Map({

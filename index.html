@@ -404,20 +404,22 @@
                         <div class="card-header figure-heding">
                             <div class="row">
                                 <h4 class="hedding-sinhala">දිස්ත්‍රික්ක අතර බෙදීයාම (දේශීය)</h4>
-                                <div class="custom-control custom-switch map-type-switch d-none">
-                                    <input type="checkbox" class="custom-control-input" id="customSwitch1">
-                                    <label class="custom-control-label" for="customSwitch1">Animated/Static</label>
+                                <div class="switch-wrapper map-type-switch">
+                                    <label for="map-switcher">Animated/Static</label>
+                                    <input class="type-switch" id="map-switcher" type="checkbox" name="map-switcher" autocomplete="off">
                                 </div>
+                                
                             </div>
                         </div>
-                        <div class="card-body chart-body">
+
+                        <div class="card-body chart-body map-body">
                             <div id='map' class="one map-si"></div>
-                            <!--<div class="map-overlay-container">
+                            <div id="animated-mapoverlaycontainer" class="map-overlay-container">
                                 <div class="map-overlay">
-                                    <h2 id="location-title"></h2>
-                                    <p id="location-description"></p>
+                                    <h2 id="location-title"><span></span></h2>
+                                    <p id="location-description"> <span></span> confirmed Cases</p>
                                 </div>
-                            </div>-->
+                            </div>
                         </div>
 
                         
@@ -670,15 +672,15 @@
     <script type="text/javascript" src="./assets/js/jquery.counterup.min.js"></script>
     <script type="text/javascript" src="./assets/js/charts/Chart.js"></script>
     <script type="text/javascript" src="./assets/js/wow.min.js"></script>
-    <script src="assets/js/plugins/papaparse.min.js"></script>
+    <script type="text/javascript" src="assets/js/plugins/papaparse.min.js"></script>
     
     <script src='https://api.mapbox.com/mapbox-gl-js/v1.8.1/mapbox-gl.js'></script>
-    <script type="text/javascript" src="./assets/js/map.js"></script>
-
+    
     <script type="text/javascript" src="./assets/js/for-navbar.js"></script>
     <script type="text/javascript" src="./assets/js/mdb.min.js"></script>
     <script type="text/javascript" src="./assets/js/api-data.js"></script>
     <script type="text/javascript" src="./assets/js/chart-data-sinhala.js"></script>
+    <script type="text/javascript" src="./assets/js/map.js"></script>
   
     <!-- activate wow -->
     <script>

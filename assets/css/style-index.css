@@ -613,14 +613,14 @@ body, html {
 
 @media all and (max-width: 410px) {
     #map-wrapper .figure-heding h4 {
-        font-size: 0.7rem;
+        font-size: 0.6rem;
     }
     
     #map-wrapper .hedding-sinhala {
-        font-size: 0.7rem;
+        font-size: 0.6rem;
     }
     .map-type-switch.switch-wrapper label {
-        font-size: 9px;
+        font-size: 8px;
     }
     
     #map.map-si, #map.map-en {
@@ -761,6 +761,10 @@ body, html {
 
 .normal-sinhala {
     font-family: 'abhaya', sans-serif !important;
+}
+
+.normal-english {
+    font-family: 'Poppins', sans-serif;
 }
 
 .fontsize1-si {

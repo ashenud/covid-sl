@@ -108,8 +108,8 @@ $(document).ready(function () {
         mapboxgl.accessToken = mapSettings.MapBocToken;
 
         var bounds = [
-            [-74.04728500751165, 40.68392799015035], // Southwest coordinates
-            [-73.91058699000139, 40.87764500765852] // Northeast coordinates
+            [78.577325, 5.771346], // Southwest coordinates
+          [83.106849, 10.004859] // Northeast coordinates
         ];
 
 

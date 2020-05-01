@@ -610,6 +610,12 @@ body, html {
     .chart-local-timeline .card-chart{
         height: 293px;
     }
+    #map-wrapper .map-overlay-container .map-overlay h2 {
+        font-size: 0.9rem;
+    }
+    #map-wrapper .map-overlay-container .map-overlay p{
+    font-size: 0.7rem;
+}
 }
 
 @media all and (max-width: 410px) {
@@ -780,6 +786,9 @@ font-size: 0.65rem !important;
 
 .fontsize3-si {
 font-size: 0.85rem !important;
+}
+.fontsize4-si {
+font-size: 0.5rem !important;
 }
 
 

@@ -1,6 +1,6 @@
 
 $(document).ready(function () {
-    var mapData, map , playMapAnimation = false;
+    var mapData, map , playMapAnimation = true;
     var mapSettings = {
         //districtData: "https://raw.githubusercontent.com/arimacdev/covid19-srilankan-data/master/Districts/districts_lk.csv",
         districtData: "/data/district/patients-data.csv",
@@ -238,6 +238,7 @@ $(document).ready(function () {
                 popup.remove();
             });
 
+            playback(0, mapData, map);
 
         });
 
@@ -293,10 +294,9 @@ $(document).ready(function () {
 
     $('#map-switcher').change(function () {
         
-        playMapAnimation = $(this).prop('checked');
+        playMapAnimation = !$(this).prop('checked');
         playback( 0, mapData, map );
         
-
     })
 
     /* mapboxgl.accessToken = 'pk.eyJ1IjoiYXNoZW51ZCIsImEiOiJjazlsZG83ZDQwM2g0M2dxdTJ5OTQ4OHh1In0.j_bRFfw78u98EwF_pTaNWw';

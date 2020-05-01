@@ -1,6 +1,6 @@
 
 $(document).ready(function () {
-    var mapData, map;
+    var mapData, map , playMapAnimation = true;
     var mapSettings = {
         //districtData: "https://raw.githubusercontent.com/arimacdev/covid19-srilankan-data/master/Districts/districts_lk.csv",
         districtData: "/data/district/patients-data.csv",
@@ -107,17 +107,23 @@ $(document).ready(function () {
 
         mapboxgl.accessToken = mapSettings.MapBocToken;
 
+        var bounds = [
+            [-74.04728500751165, 40.68392799015035], // Southwest coordinates
+            [-73.91058699000139, 40.87764500765852] // Northeast coordinates
+        ];
+
 
         map = new mapboxgl.Map({
             container: 'map',
             style: 'mapbox://styles/ashenud/ck9n0r7ws2ih31ipd3q8dtjln',
             center: [80.6715, 7.9],
-            zoom: 6.7
+            zoom: 6.7,
+            maxBounds: bounds // Sets bounds as max
         });
 
 
         // Define a new navigation control.
-        var navigation = new mapboxgl.NavigationControl();
+       /*  var navigation = new mapboxgl.NavigationControl();
         // Add zoom and rotation controls to the map.
         map.addControl(navigation);
 
@@ -130,7 +136,7 @@ $(document).ready(function () {
         map.dragPan.disable();
         map.keyboard.disable();
         map.doubleClickZoom.disable();
-        map.touchZoomRotate.disable();
+        map.touchZoomRotate.disable(); */
 
 
         map.on('load', function () {
@@ -238,15 +244,16 @@ $(document).ready(function () {
                 popup.remove();
             });
 
+            playback(0, mapData, map);
 
         });
 
 
     }
 
-    function playback(action, index, mapData, map) {
+    function playback(index, mapData, map) {
 
-        if (action == "play"){
+        if (playMapAnimation){
 
             $("#animated-mapoverlaycontainer").fadeIn();
             // Animate the map position based on camera properties
@@ -269,9 +276,8 @@ $(document).ready(function () {
                     // Increment index
                     index = index + 1 === mapSettings.playbackLimit ? 0 : index + 1;
 
-                    if (action == "play") {
-                        console.log(action);
-                        playback(action, index, mapData, map);
+                    if (playMapAnimation) {
+                        playback( index, mapData, map );
                     }else{
                         resetCamera();
                     }
@@ -283,6 +289,7 @@ $(document).ready(function () {
     }
 
     function resetCamera() {
+        $("#animated-mapoverlaycontainer").fadeOut();
         map.flyTo({
             center: [80.6715, 7.9],
             zoom: 6.7,
@@ -292,17 +299,10 @@ $(document).ready(function () {
     }
 
     $('#map-switcher').change(function () {
-
         
-
-        if ($(this).prop('checked')){
-            console.log("play");
-            playback("play", 0, mapData, map);
-        }else{
-            console.log("pause");
-            playback("pause", 0, mapData, map);
-        }
-
+        playMapAnimation = !$(this).prop('checked');
+        playback( 0, mapData, map );
+        
     })
 
     /* mapboxgl.accessToken = 'pk.eyJ1IjoiYXNoZW51ZCIsImEiOiJjazlsZG83ZDQwM2g0M2dxdTJ5OTQ4OHh1In0.j_bRFfw78u98EwF_pTaNWw';

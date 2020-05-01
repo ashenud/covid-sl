@@ -410,7 +410,7 @@ body, html {
     width: auto;
     position: absolute;
     right: 10px;
-    top: 10px;
+    top: 7px;
     margin: 0;
 }
 
@@ -437,7 +437,7 @@ body, html {
 }
 
 .map-type-switch.switch-wrapper input:checked[type=checkbox]:first-of-type {
-    background: linear-gradient(0deg, #ad70ea, #7539bd);
+    background: linear-gradient(270deg, #ff286a, #ff1c3b);
     box-shadow: 0 0 0 1px #353535, 0 0 0 3px #3e3e3e, inset 0 0 3px #000;
 
 }
@@ -508,9 +508,40 @@ body, html {
     font-size: 11px;
 }
 
-#map-wrapper .mapboxgl-popup .mapboxgl-popup-tip {
-    border-top-color: rgba(126, 66, 66, 0.9);
+#map-wrapper .mapboxgl-popup-anchor-bottom .mapboxgl-popup-tip {
+    border-top-color: rgba(0,0,0,0.9);
     margin-bottom: 10px;
+}
+
+#map-wrapper .mapboxgl-popup-anchor-top .mapboxgl-popup-tip {
+    border-bottom-color: rgba(0,0,0,0.9);
+    margin-top: 10px;
+}
+
+#map-wrapper .mapboxgl-popup-anchor-right .mapboxgl-popup-tip {
+    border-left-color: rgba(0,0,0,0.9);
+    margin-right: 10px;
+}
+
+#map-wrapper .mapboxgl-popup-anchor-left .mapboxgl-popup-tip {
+    border-right-color: rgba(0,0,0,0.9);
+    margin-left: 10px;
+}
+
+#map-wrapper .mapboxgl-popup-anchor-bottom-left .mapboxgl-popup-tip {
+    border-top-color: rgba(0,0,0,0.9);
+}
+
+#map-wrapper .mapboxgl-popup-anchor-bottom-right .mapboxgl-popup-tip {
+    border-top-color: rgba(0,0,0,0.9);
+}
+
+#map-wrapper .mapboxgl-popup-anchor-top-left .mapboxgl-popup-tip {
+    border-bottom-color: rgba(0,0,0,0.9);
+}
+
+#map-wrapper .mapboxgl-popup-anchor-top-right .mapboxgl-popup-tip {
+    border-bottom-color: rgba(0,0,0,0.9);
 }
 
 #map-wrapper .map-bodyr {
@@ -541,22 +572,66 @@ body, html {
 
 /*-- Map area By samith --*/
 
-@media all and (max-width: 1199px) {
+@media all and (max-width: 1200px) {
     #map.map-si, #map.map-en {
-        height: 250px;
+        height: 253px;
     }
     #chart-timeline {
         bottom: 40px;
         position: absolute;
     }
     .chart-local-timeline .card-chart{
-        height: 312px;
+        height: 315px;
     }
 }
 
-@media all and (max-width: 400px) {
+@media all and (max-width: 768px) {
     #map.map-si, #map.map-en {
-        height: 350px;
+        height: 600px;
+    }
+    #chart-timeline {
+        bottom: 18px;
+        position: absolute;
+    }
+    .chart-local-timeline .card-chart{
+        height: 389px;
+    }
+}
+
+@media all and (max-width: 576px) {
+    #map.map-si, #map.map-en {
+        height: 500px;
+    }
+    #chart-timeline {
+        bottom: 18px;
+        position: absolute;
+    }
+    .chart-local-timeline .card-chart{
+        height: 293px;
+    }
+}
+
+@media all and (max-width: 410px) {
+    #map-wrapper .figure-heding h4 {
+        font-size: 0.7rem;
+    }
+    
+    #map-wrapper .hedding-sinhala {
+        font-size: 0.7rem;
+    }
+    .map-type-switch.switch-wrapper label {
+        font-size: 10px;
+    }
+    
+    #map.map-si, #map.map-en {
+        height: 375px;
+    }
+    #chart-timeline {
+        bottom: 18px;
+        position: absolute;
+    }
+    .chart-local-timeline .card-chart{
+        height: 209px;
     }
 }
 

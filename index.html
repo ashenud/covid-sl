@@ -405,7 +405,7 @@
                             <div class="row">
                                 <h4 class="hedding-sinhala">දිස්ත්‍රික්ක අතර බෙදීයාම (දේශීය)</h4>
                                 <div class="switch-wrapper map-type-switch">
-                                    <label for="map-switcher">Animated/Static</label>
+                                    <label for="map-switcher">සජීවීකරණය/ස්ථිතික</label>
                                     <input class="type-switch" id="map-switcher" type="checkbox" name="map-switcher" autocomplete="off">
                                 </div>
                                 
@@ -643,14 +643,21 @@
             </div>
             
             <div class="data-sources float-left">
-                <div class="copyright api normal-sinhala fontsize1-si">
+                <div class="copyright api normal-sinhala fontsize1-si float-left text-justify">
                     දේශීය තොරතුරු මූලශ්‍රය(API) -  
                     <a class="normal-sinhala" href="https://www.hpb.health.gov.lk/en" target="_blank">
                          සෞඛ්‍ය ප්‍රවර්ධන කාර්යාංශය - ශ්‍රී ලංකාව
                     </a>
                 </div>
 
-                <div class="copyright api normal-sinhala fontsize1-si">
+                <div class="copyright api normal-sinhala fontsize1-si float-left text-justify">
+                    දිස්ත්‍රික්කගත තොරතුරු -  
+                    <a class="normal-sinhala" href="http://www.epid.gov.lk/" target="_blank">
+                         වසංගත රෝග විද්‍යා අංශය - සෞඛ්‍ය අමාත්‍යංශය
+                    </a>
+                </div>
+
+                <div class="copyright api normal-sinhala fontsize1-si float-left text-justify">
                     ගෝලීය තොරතුරු මූලශ්‍රය(API) -  
                     <a class="normal-sinhala" href="https://about-corona.net/" target="_blank">
                          about-corona.net
@@ -724,6 +731,7 @@
         if ($(window).width() <= 640){ 
             $(".copyright").removeClass('float-right');
             $(".data-sources").removeClass('float-left');
+            $(".api").removeClass('text-justify');
         }
     </script>
 	

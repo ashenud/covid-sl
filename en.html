@@ -641,14 +641,21 @@
             </div>
             
             <div class="data-sources float-left">
-                <div class="copyright api float-left">
+                <div class="copyright api float-left text-justify">
                     Local Information Source(API) -
                     <a href="https://www.hpb.health.gov.lk/en" target="_blank">
                         Health Promotion Bureau - Sri Lanka
                     </a>
                 </div>
                 
-                <div class="copyright api float-left">
+                <div class="copyright api float-left text-justify">
+                    District Information -
+                    <a href="http://www.epid.gov.lk/" target="_blank">
+                        Epidemiology Unit - Ministry of Health
+                    </a>
+                </div>
+                
+                <div class="copyright api float-left text-justify">
                     Global Information Source(API) -
                     <a href="https://about-corona.net/" target="_blank">
                         about-corona.net
@@ -722,6 +729,7 @@
         if ($(window).width() <= 640){ 
             $(".copyright").removeClass('float-right');
             $(".api").removeClass('float-left');
+            $(".api").removeClass('text-justify');
         }
     </script>
 	

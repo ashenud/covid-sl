@@ -1,8 +1,8 @@
 Prefecture,Prefecture (si),Cases,Recovered,Deaths,longitude,latitude,type,IsShowOnPlay
-Naval Base - Welisara ,වැලිසර නාවික හමුදා කඳවුර,190,0,0,79.905327,7.020416,other,0
-Colombo District,කොළඹ දිස්ත්‍රික්කය,157,2,0,79.971264,6.847274,dist,1
+Naval Base - Welisara ,වැලිසර නාවික හමුදා කඳවුර,199,0,0,79.905327,7.020416,other,0
+Colombo District,කොළඹ දිස්ත්‍රික්කය,158,2,0,79.971264,6.847274,dist,1
 Kalutara District,කළුතර දිස්ත්‍රික්කය,65,0,0,80.142188,6.562991,dist,1
-Gampaha District,ගම්පහ දිස්ත්‍රික්කය,47,1,0,80.02694,7.189221,dist,1
+Gampaha District,ගම්පහ දිස්ත්‍රික්කය,52,1,0,80.02694,7.189221,dist,1
 Puttalam District,පුත්තලම දිස්ත්‍රික්කය,41,0,0,79.897757,7.953518,dist,1
 Quarantine Centers,නිරෝධායන මධ්‍යස්ථාන,41,0,0,79.405332,7.6588919,qc,0
 Kurunegala District,කුරුණෑගල දිස්ත්‍රික්කය,23,0,0,80.247454,7.64218,dist,1

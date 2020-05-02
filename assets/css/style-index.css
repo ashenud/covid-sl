@@ -586,6 +586,20 @@ body, html {
     }
 }
 
+
+@media all and (max-width: 880px) {
+    #map-wrapper .figure-heding h4 {
+        font-size: 0.6rem;
+    }
+    
+    #map-wrapper .hedding-sinhala {
+        font-size: 0.7rem !important;
+    }
+    .map-type-switch.switch-wrapper label {
+        font-size: 8px;
+    }
+}
+
 @media all and (max-width: 768px) {
     #map.map-si, #map.map-en {
         height: 600px;
@@ -596,6 +610,16 @@ body, html {
     }
     .chart-local-timeline .card-chart{
         height: 389px;
+    }
+    #map-wrapper .figure-heding h4 {
+        font-size: 0.9rem;
+    }
+    
+    #map-wrapper .hedding-sinhala {
+        font-size: 1rem !important;
+    }
+    .map-type-switch.switch-wrapper label {
+        font-size: 12px;
     }
 }
 

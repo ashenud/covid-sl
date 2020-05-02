@@ -345,6 +345,9 @@ $(document).ready(function () {
             $(this).addClass("showmore");
             $(this).removeClass("showless");
             $(this).text($(this).data("moretext"));
+            $([document.documentElement, document.body]).animate({
+                scrollTop: $("#district-table").offset().top - 100
+            }, 500);
         }
     });
     /* mapboxgl.accessToken = 'pk.eyJ1IjoiYXNoZW51ZCIsImEiOiJjazlsZG83ZDQwM2g0M2dxdTJ5OTQ4OHh1In0.j_bRFfw78u98EwF_pTaNWw';

@@ -307,12 +307,14 @@ $(document).ready(function () {
 
             var tableCol;
 
-            if (lang == "si") {
-                tableCol = "<tr><td>" + data[1] + "</td><td>" + data[2] + "</td></tr>";
-            } else {
-                tableCol = "<tr><td>" + data[0] + "</td><td>" + data[2] + "</td></tr>";
-            }
-            $("#district-table").find("table").find("tbody").append(tableCol);
+            //if (data[7] == "dist") {
+                if (lang == "si") {
+                    tableCol = "<tr><td>" + data[1] + "</td><td>" + data[2] + "</td></tr>";
+                } else {
+                    tableCol = "<tr><td>" + data[0] + "</td><td>" + data[2] + "</td></tr>";
+                }
+                $("#district-table").find("table").find("tbody").append(tableCol);
+           // }
         });
 
        /*  <tr>
@@ -328,7 +330,23 @@ $(document).ready(function () {
         playback( 0, mapData, map );
         
     })
+    
+    $('#district-tableshowmore').click(function (e) {
+        e.preventDefault();
+        if ($(this).hasClass("showmore")){
 
+            $("#district-table").addClass("show-content");
+            $(this).removeClass("showmore");
+            $(this).addClass("showless");
+            $(this).text($(this).data("lesstext"));
+
+        }else{
+            $("#district-table").removeClass("show-content");
+            $(this).addClass("showmore");
+            $(this).removeClass("showless");
+            $(this).text($(this).data("moretext"));
+        }
+    });
     /* mapboxgl.accessToken = 'pk.eyJ1IjoiYXNoZW51ZCIsImEiOiJjazlsZG83ZDQwM2g0M2dxdTJ5OTQ4OHh1In0.j_bRFfw78u98EwF_pTaNWw';
     var map = new mapboxgl.Map({
         container: 'map',

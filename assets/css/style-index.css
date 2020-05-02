@@ -362,7 +362,7 @@ body, html {
 .map-body {
     background: none;
     margin-bottom: 15px;
-    padding: 5px;
+    padding: 0px;
     display: flex;
     justify-content: center;
     position: relative;
@@ -373,6 +373,25 @@ body, html {
     display: none;
 }
 
+
+#district-table{
+    overflow: hidden;
+    padding: 5px 0;
+    height: 406px;
+    transition: height 2s ease-in-out;
+}
+
+#district-table.show-content{
+    height: auto;
+    transition: height 2s ease-in-out;
+}
+
+#district-table table{
+    margin-bottom:0;
+}
+#district-table tr{
+    height: 50px;
+}
 /*-- Error UI By samith --*/
 
 .error-state-ui-outer{
@@ -553,8 +572,8 @@ body, html {
 
 #map-wrapper .map-overlay-container {
     position: absolute;
-    top: 5px;
-    left: 5px;
+    top: 0px;
+    left: 0px;
     height: 80px;
     min-width: 200px;
     background: rgba(0, 0, 0, 0.6);

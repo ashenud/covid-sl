@@ -377,7 +377,7 @@ body, html {
 #district-table{
     overflow: hidden;
     padding: 5px 0;
-    height: 408px;
+    height: 420px;
     box-shadow: 0 4px 20px 0 rgba(0,0,0,.14),0 7px 12px -5px rgba(33,33,33,.46);
     transition: height 2s ease-in-out;
 }
@@ -398,30 +398,62 @@ body, html {
 #district-table .table-dark th{
     text-transform: uppercase;
     font-weight: bold;
-    font-size: 15px;
+    font-size: 13px;
     border-radius: 15px;
+    border-bottom: 1px solid #dee2e6;
+    border-top: none;
+    line-height: 1;
+    padding: 12px 15px;
 }
 
 #district-table .table-dark td{
-    font-size: 11px;
+    font-size: 12px;
     border: none;
-    margin-top: 3px;
+    line-height: 2;
+    padding: 5px 15px;
 }
-
+#district-table .table-dark tr:first-child td {
+    padding: 10px 15px 0px;
+}
 #district-table tr{
-    height: 31px;
-    line-height: 0;
+    line-height: 0.2;
+    vertical-align: middle;
 }
 
 .dis-table-footer {
     margin-top: 4px !important;
     margin-bottom: 10px;
     font-size: 0.7rem;
+    text-align: center;
 }
 
 .dis-table-footer a{
     text-decoration: none;
     margin-left: 13px;
+}
+#district-tableshowmore{
+    margin: 0;
+    line-height: 3;
+    font-size: 14px;
+}
+
+#district-tableshowmore i{
+    display: inline-block;
+    position: relative;
+    margin-left: 5px;
+}
+
+#district-tableshowmore i:before{
+    top: -10px;
+    position: absolute;
+}
+
+#district-tableshowmore .fontsize1-si {
+    font-size: 0.9rem !important;
+}
+
+#district-tableshowmore .fontsize3-si {
+    font-size: 1rem !important;
 }
 
 

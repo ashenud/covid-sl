@@ -309,7 +309,7 @@ $(document).ready(function () {
 
             //if (data[7] == "dist") {
                 if (lang == "si") {
-                    tableCol = "<tr><td class='normal-sinhala fontsize3-si'>" + data[1] + "</td><td class='normal-sinhala .fontsize3-si'>" + data[2] + "</td></tr>";
+                    tableCol = "<tr><td class='normal-sinhala fontsize3-si'>" + data[1] + "</td><td class='normal-sinhala fontsize3-si'>" + data[2] + "</td></tr>";
                 } else {
                     tableCol = "<tr><td>" + data[0] + "</td><td>" + data[2] + "</td></tr>";
                 }
@@ -338,13 +338,14 @@ $(document).ready(function () {
             $("#district-table").addClass("show-content");
             $(this).removeClass("showmore");
             $(this).addClass("showless");
-            $(this).text($(this).data("lesstext"));
+            $(this).html('<span>' + $(this).data("lesstext") + '</span><i class= "now-ui-icons arrows-1_minimal-up" ></i >');
 
         }else{
             $("#district-table").removeClass("show-content");
             $(this).addClass("showmore");
             $(this).removeClass("showless");
-            $(this).text($(this).data("moretext"));
+            $(this).html('<span>'+ $(this).data("moretext") + '</span><i class= "now-ui-icons arrows-1_minimal-down" ></i >');
+
             $([document.documentElement, document.body]).animate({
                 scrollTop: $("#district-table").offset().top - 100
             }, 500);

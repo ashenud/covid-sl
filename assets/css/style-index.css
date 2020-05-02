@@ -575,14 +575,25 @@ body, html {
 
 @media all and (max-width: 1600px) {
     #map.map-si, #map.map-en {
-        height: 253px;
+        height: 615px;
     }
-    #chart-timeline {
+    
+    .chart-local-timeline .card-chart{
+        min-height: 374px;
+    }
+    
+    .chart-local-timeline .card-chart.timeline-si{
+        min-height: 382px;
+    }
+    
+    .left-local #line-chart, 
+    .right-global #line-chart {
         bottom: 40px;
         position: absolute;
     }
-    .chart-local-timeline .card-chart{
-        height: 315px;
+    .left-local .card-chart,
+    .right-global .card-chart{
+        min-height: 210px;
     }
 }
 
@@ -595,7 +606,10 @@ body, html {
         position: absolute;
     }
     .chart-local-timeline .card-chart{
-        height: 315px;
+        min-height: 315px;
+    }
+    .chart-local-timeline .card-chart.timeline-si{
+        min-height: 315px;
     }
 }
 
@@ -622,7 +636,10 @@ body, html {
         position: absolute;
     }
     .chart-local-timeline .card-chart{
-        height: 389px;
+        min-height: 389px;
+    }
+    .chart-local-timeline .card-chart.timeline-si{
+        min-height: 389px;
     }
     #map-wrapper .figure-heding h4 {
         font-size: 0.9rem;
@@ -645,7 +662,10 @@ body, html {
         position: absolute;
     }
     .chart-local-timeline .card-chart{
-        height: 293px;
+        min-height: 293px;
+    }
+    .chart-local-timeline .card-chart.timeline-si{
+        min-height: 293px;
     }
     #map-wrapper .map-overlay-container .map-overlay h2 {
         font-size: 0.9rem;
@@ -677,7 +697,10 @@ body, html {
         position: absolute;
     }
     .chart-local-timeline .card-chart{
-        height: 209px;
+        min-height: 209px;
+    }
+    .chart-local-timeline .card-chart.timeline-si{
+        min-height: 209px;
     }
 }
 

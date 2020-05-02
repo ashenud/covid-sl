@@ -435,6 +435,7 @@ body, html {
     margin: 0;
     line-height: 3;
     font-size: 14px;
+    color:rgba(255, 255, 255, .6);
 }
 
 #district-tableshowmore i{
@@ -444,7 +445,7 @@ body, html {
 }
 
 #district-tableshowmore i:before{
-    top: -10px;
+    top: -11px;
     position: absolute;
 }
 
@@ -455,6 +456,7 @@ body, html {
 #district-tableshowmore .fontsize3-si {
     font-size: 1rem !important;
 }
+
 
 
 /*.dis-table-footer a:hover,*/

@@ -7,6 +7,12 @@
     <link rel="icon" type="image/png" href="./assets/img/favicon.png">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta content='width=device-width, initial-scale=1.0, shrink-to-fit=no' name='viewport' />
+    <meta property="og:url" content="" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="" />
+    <meta property="og:description" content="" />
+    <meta property="og:image" content=""/>
+
     <script>
       var lang = "si";
     </script>
@@ -34,7 +40,7 @@
     <nav class="navbar navbar-expand-lg fixed-top navbar-transparent " color-on-scroll="30">
         <div class="container nav-content">
             <div class="navbar-translate">
-                <a class="navbar-brand" href="#" rel="tooltip" data-placement="bottom">
+                <a class="navbar-brand" href="/" rel="tooltip" data-placement="bottom">
                     <img src="assets/img/icon-bw.png">COVID-19
                 </a>
                 <button class="navbar-toggler navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
@@ -412,7 +418,7 @@
                             <div id="animated-mapoverlaycontainer" class="map-overlay-container">
                                 <div class="map-overlay">
                                     <h2 id="location-title"><span class="normal-sinhala"></span></h2>
-                                    <p id="location-description" class="normal-sinhala">තහවුරු කළ රෝගීන්<span></span> යි</p>
+                                    <p id="location-description" class="normal-sinhala">තහවුරු කළ රෝගීන් <span></span> යි</p>
                                 </div>
                             </div>
                         </div>
@@ -774,11 +780,13 @@
 	
     <!-- footer in small device -->
     <script>
+        
         if ($(window).width() <= 640){ 
             $(".copyright").removeClass('float-right');
             $(".data-sources").removeClass('float-left');
             $(".api").removeClass('text-justify');
         }
+
     </script>
 	
   

@@ -377,7 +377,8 @@ body, html {
 #district-table{
     overflow: hidden;
     padding: 5px 0;
-    height: 406px;
+    height: 408px;
+    box-shadow: 0 4px 20px 0 rgba(0,0,0,.14),0 7px 12px -5px rgba(33,33,33,.46);
     transition: height 2s ease-in-out;
 }
 
@@ -389,9 +390,48 @@ body, html {
 #district-table table{
     margin-bottom:0;
 }
-#district-table tr{
-    height: 50px;
+
+#district-table .table-dark{
+    background: none;
 }
+
+#district-table .table-dark th{
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 15px;
+    border-radius: 15px;
+}
+
+#district-table .table-dark td{
+    font-size: 11px;
+    border: none;
+    margin-top: 3px;
+}
+
+#district-table tr{
+    height: 31px;
+    line-height: 0;
+}
+
+.dis-table-footer {
+    margin-top: 4px !important;
+    margin-bottom: 10px;
+    font-size: 0.7rem;
+}
+
+.dis-table-footer a{
+    text-decoration: none;
+    margin-left: 13px;
+}
+
+
+/*.dis-table-footer a:hover,*/
+.dis-table-footer a:focus{
+    color: #007bff;
+}
+
+
+
 /*-- Error UI By samith --*/
 
 .error-state-ui-outer{
@@ -594,7 +634,7 @@ body, html {
 
 @media all and (max-width: 1600px) {
     #map.map-si, #map.map-en {
-        height: 615px;
+        height: 656px;
     }
     
     .chart-local-timeline .card-chart{
@@ -612,13 +652,13 @@ body, html {
     }
     .left-local .card-chart,
     .right-global .card-chart{
-        min-height: 210px;
+        min-height: 220px;
     }
 }
 
 @media all and (max-width: 1200px) {
     #map.map-si, #map.map-en {
-        height: 253px;
+        height: 263px;
     }
     #chart-timeline {
         bottom: 40px;
@@ -777,6 +817,11 @@ body, html {
     box-shadow: 0 4px 20px 0 rgba(0,0,0,.14),0 7px 12px -5px rgba(33,33,33,.46);
 }
 
+.seventy {
+    box-shadow: none;
+    border: none;
+}
+
 .eighth{
     box-shadow: 0 12px 20px -10px rgba(0,188,212,.28),0 4px 20px 0 rgba(0,0,0,.12),0 7px 8px -5px rgba(156,39,176,.4);
 }
@@ -866,8 +911,13 @@ font-size: 0.65rem !important;
 .fontsize3-si {
 font-size: 0.85rem !important;
 }
+
 .fontsize4-si {
 font-size: 0.5rem !important;
+}
+
+.fontsize5-si {
+font-size: 0.95rem !important;
 }
 
 

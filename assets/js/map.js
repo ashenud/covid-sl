@@ -309,7 +309,7 @@ $(document).ready(function () {
 
             //if (data[7] == "dist") {
                 if (lang == "si") {
-                    tableCol = "<tr><td>" + data[1] + "</td><td>" + data[2] + "</td></tr>";
+                    tableCol = "<tr><td class='normal-sinhala fontsize3-si'>" + data[1] + "</td><td class='normal-sinhala .fontsize3-si'>" + data[2] + "</td></tr>";
                 } else {
                     tableCol = "<tr><td>" + data[0] + "</td><td>" + data[2] + "</td></tr>";
                 }

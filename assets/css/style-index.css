@@ -573,6 +573,19 @@ body, html {
 
 /*-- Map area By samith --*/
 
+@media all and (max-width: 1600px) {
+    #map.map-si, #map.map-en {
+        height: 253px;
+    }
+    #chart-timeline {
+        bottom: 40px;
+        position: absolute;
+    }
+    .chart-local-timeline .card-chart{
+        height: 315px;
+    }
+}
+
 @media all and (max-width: 1200px) {
     #map.map-si, #map.map-en {
         height: 253px;

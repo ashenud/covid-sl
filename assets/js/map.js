@@ -32,9 +32,10 @@ $(document).ready(function () {
                 var data = results.data;
 
 
-                /* data.shift();
-                */
+                data.shift();
+                
                 buildFeaturesObj(data);
+                drawDistrictTable(data);
             }
         });
 
@@ -83,7 +84,7 @@ $(document).ready(function () {
                 features.push(featureOBJ)
             }
         });
-        features.shift();
+        //features.shift();
         drawStaticMap(features);
 
         console.log(features);
@@ -296,6 +297,29 @@ $(document).ready(function () {
             pitch: 0,
             bearing:0
         });
+    }
+    
+    function drawDistrictTable(districtData){
+
+        console.log(districtData);
+
+        $.each(districtData, function (index, data) {
+
+            var tableCol;
+
+            if (lang == "si") {
+                tableCol = "<tr><td>" + data[1] + "</td><td>" + data[2] + "</td></tr>";
+            } else {
+                tableCol = "<tr><td>" + data[0] + "</td><td>" + data[2] + "</td></tr>";
+            }
+            $("#district-table").find("table").find("tbody").append(tableCol);
+        });
+
+       /*  <tr>
+            <td>Ampara District</td>
+            <td>3</td>
+        </tr> */
+            
     }
 
     $('#map-switcher').change(function () {

@@ -5,11 +5,15 @@ $(document).ready(function() {
         lolalTimeline: "https://corona-api.com/countries/lk",
         globalTimeline: "https://corona-api.com/timeline",
     };    
-    
-    localTimeline();
-    globalTimeline();
-    localTimelineSi();
-    globalTimelineSi();
+
+    if (lang == "si") {
+        localTimelineSi();
+        globalTimelineSi();
+    } else {
+        localTimeline();
+        globalTimeline();
+    }
+
     
     function getData(params, callback) {
         $.ajax({
@@ -1009,9 +1013,7 @@ $(document).ready(function() {
         
         
     
-            } 
-            
-            else {
+            }else {
                 console.error("API Failed");
             }
         })

@@ -946,7 +946,7 @@ $(document).ready(function() {
                                 type: 'linear',
                                 ticks: {
                                     beginAtZero: true,
-                                    stepSize: 20000,                                
+                                    stepSize: 50000,                                
                                     fontColor: 'rgba(255, 255, 255, 0.7)',
                                     fontSize: 8,
                                     padding: 5,
@@ -1227,7 +1227,7 @@ $(document).ready(function() {
                                 type: 'linear',
                                 ticks: {
                                     beginAtZero: true,
-                                    stepSize: 20000,                                
+                                    stepSize: 50000,                                
                                     fontColor: 'rgba(255, 255, 255, 1)',
                                     fontSize: 8,
                                     padding: 5,

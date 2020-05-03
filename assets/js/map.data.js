@@ -87,8 +87,6 @@ $(document).ready(function () {
         //features.shift();
         drawStaticMap(features);
 
-        console.log(features);
-
     }
 
     function drawStaticMap(featuresObj) {
@@ -223,7 +221,7 @@ $(document).ready(function () {
                     District = '<p class="map-font-en">' + e.features[0].properties.DistrictEn + '</p>';
                 }
 
-                console.log(lang);
+                
                 // Ensure that if the map is zoomed out such that multiple
                 // copies of the feature are visible, the popup appears
                 // over the copy being pointed to.
@@ -301,7 +299,7 @@ $(document).ready(function () {
     
     function drawDistrictTable(districtData){
 
-        console.log(districtData);
+        
 
         $.each(districtData, function (index, data) {
 

@@ -1,5 +1,5 @@
 Prefecture,Prefecture (si),Cases,Recovered,Deaths,longitude,latitude,type,IsShowOnPlay
-Colombo District,කොළඹ දිස්ත්‍රික්කය,152,2,0,79.971264,6.847274,dist,1
+Colombo District,කොළඹ දිස්ත්‍රික්කය,153,2,0,79.971264,6.847274,dist,1
 Puttalam District,පුත්තලම දිස්ත්‍රික්කය,35,0,0,79.897757,7.953518,dist,1
 Gampaha District,ගම්පහ දිස්ත්‍රික්කය,35,1,0,80.02694,7.189221,dist,1
 Kalutara District,කළුතර දිස්ත්‍රික්කය,34,0,0,80.142188,6.562991,dist,1
@@ -24,7 +24,7 @@ Nuwara Eliya District,නුවරඑළිය දිස්ත්‍රික්
 Kilinochchi District,කිලිනොච්චිය දිස්ත්‍රික්කය,0,0,0,80.287481,9.388387,dist,1
 Mannar District,මන්නාරම දිස්ත්‍රික්කය,0,0,0,80.080114,8.86997,dist,1
 Mullaitivu District,මුලතිව් දිස්ත්‍රික්කය,0,0,0,80.514158,9.219403,dist,1
-NAVY,නාවික හමුදා,327,0,0,79.505332,7.988919,other,0
+NAVY,නාවික හමුදා,342,0,0,79.505332,7.988919,other,0
 OTHER FORCES,අනෙකුත් හමුදාවන්,11,0,0,79.205332,7.988919,other,0
-Quarantine Centers,නිරෝධායන මධ්‍යස්ථාන,104,0,0,79.505332,7.688919,qc,0
+Quarantine Centers,නිරෝධායන මධ්‍යස්ථාන,105,0,0,79.505332,7.688919,qc,0
 Foreigners,විදේශිකයන්,3,0,7,79.505332,7.388919,uns,0

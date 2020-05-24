@@ -173,7 +173,7 @@ $(document).ready(function() {
                             yAxes: [{
                                 ticks: {
                                     beginAtZero: true,
-                                    stepSize: 5,                                
+                                    stepSize: 10,                                
                                     fontColor: 'rgba(255, 255, 255, 0.7)',
                                     fontSize: 7,
                                     padding: 5,
@@ -312,7 +312,7 @@ $(document).ready(function() {
                                 type: 'linear',
                                 ticks: {
                                     beginAtZero: true,
-                                    stepSize: 150,                                
+                                    stepSize: 300,                                
                                     fontColor: 'rgba(255, 255, 255, 0.7)',
                                     fontSize: 7,
                                     padding: 5,
@@ -526,7 +526,7 @@ $(document).ready(function() {
                             yAxes: [{
                                 ticks: {
                                     beginAtZero: true,
-                                    stepSize: 5,                                
+                                    stepSize: 10,                                
                                     fontColor: 'rgba(255, 255, 255, 1)',
                                     fontSize: 7,
                                     padding: 5,
@@ -665,7 +665,7 @@ $(document).ready(function() {
                                 type: 'linear',
                                 ticks: {
                                     beginAtZero: true,
-                                    stepSize: 150,                                
+                                    stepSize: 300,                                
                                     fontColor: 'rgba(255, 255, 255, 1)',
                                     fontSize: 7,
                                     padding: 5,
@@ -801,7 +801,7 @@ $(document).ready(function() {
                                 type: 'linear',
                                 ticks: {
                                     beginAtZero: true,
-                                    stepSize: 1000000,                                
+                                    stepSize: 2000000,                                
                                     fontColor: 'rgba(255, 255, 255, 0.7)',
                                     fontSize: 8,
                                     padding: 5,
@@ -946,7 +946,7 @@ $(document).ready(function() {
                                 type: 'linear',
                                 ticks: {
                                     beginAtZero: true,
-                                    stepSize: 50000,                                
+                                    stepSize: 100000,                                
                                     fontColor: 'rgba(255, 255, 255, 0.7)',
                                     fontSize: 8,
                                     padding: 5,
@@ -1082,7 +1082,7 @@ $(document).ready(function() {
                                 type: 'linear',
                                 ticks: {
                                     beginAtZero: true,
-                                    stepSize: 1000000,                                
+                                    stepSize: 2000000,                                
                                     fontColor: 'rgba(255, 255, 255, 1)',
                                     fontSize: 8,
                                     padding: 5,
@@ -1227,7 +1227,7 @@ $(document).ready(function() {
                                 type: 'linear',
                                 ticks: {
                                     beginAtZero: true,
-                                    stepSize: 50000,                                
+                                    stepSize: 100000,                                
                                     fontColor: 'rgba(255, 255, 255, 1)',
                                     fontSize: 8,
                                     padding: 5,

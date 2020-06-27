@@ -105,7 +105,7 @@ $(document).ready(function() {
                             yAxes: [{
                                 ticks: {
                                     beginAtZero: true,
-                                    stepSize: 10,                                
+                                    stepSize: 20,                                
                                     fontColor: 'rgba(255, 255, 255, 0.7)',
                                     fontSize: 7,
                                     padding: 5,
@@ -458,7 +458,7 @@ $(document).ready(function() {
                             yAxes: [{
                                 ticks: {
                                     beginAtZero: true,
-                                    stepSize: 10,                                
+                                    stepSize: 20,                                
                                     fontColor: 'rgba(255, 255, 255, 1)',
                                     fontSize: 7,
                                     padding: 5,

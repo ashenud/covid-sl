@@ -1,0 +1,5 @@
+ReWriteEngine On
+
+# sinhala
+
+RewriteRule ^sinhala?$ /si.html [L]

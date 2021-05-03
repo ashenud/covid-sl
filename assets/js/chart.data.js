@@ -49,9 +49,9 @@ $(document).ready(function() {
                 let active = [];
                 let final_data = [];
 
-                let x=157;
+                let x=310;
                 let y=local.data.timeline.length-x;
-                let j=157;
+                let j=310;
                 let k=local.data.timeline.length-j;
                 let a=14;
                 let b=local.data.timeline.length-a;
@@ -105,7 +105,7 @@ $(document).ready(function() {
                             yAxes: [{
                                 ticks: {
                                     beginAtZero: true,
-                                    stepSize: 150,                                
+                                    stepSize: 250,                                
                                     fontColor: 'rgba(255, 255, 255, 0.7)',
                                     fontSize: 7,
                                     padding: 5,
@@ -173,7 +173,7 @@ $(document).ready(function() {
                             yAxes: [{
                                 ticks: {
                                     beginAtZero: true,
-                                    stepSize: 30,                                
+                                    stepSize: 250,                                
                                     fontColor: 'rgba(255, 255, 255, 0.7)',
                                     fontSize: 7,
                                     padding: 5,
@@ -312,10 +312,13 @@ $(document).ready(function() {
                                 type: 'linear',
                                 ticks: {
                                     beginAtZero: true,
-                                    stepSize: 1500,                                
+                                    stepSize: 20000,                                
                                     fontColor: 'rgba(255, 255, 255, 0.7)',
                                     fontSize: 7,
                                     padding: 5,
+                                    callback: function (value, index, values) {
+                                        return value / 1e3 + 'K';
+                                    }
                                 },
                                 gridLines: false
                             }],
@@ -402,9 +405,9 @@ $(document).ready(function() {
                 let active = [];
                 let final_data = [];
 
-                let x=157;
+                let x=310;
                 let y=local.data.timeline.length-x;
-                let j=157;
+                let j=310;
                 let k=local.data.timeline.length-j;
                 let a=14;
                 let b=local.data.timeline.length-a;
@@ -458,7 +461,7 @@ $(document).ready(function() {
                             yAxes: [{
                                 ticks: {
                                     beginAtZero: true,
-                                    stepSize: 150,                                
+                                    stepSize: 250,                                
                                     fontColor: 'rgba(255, 255, 255, 1)',
                                     fontSize: 7,
                                     padding: 5,
@@ -526,7 +529,7 @@ $(document).ready(function() {
                             yAxes: [{
                                 ticks: {
                                     beginAtZero: true,
-                                    stepSize: 30,                                
+                                    stepSize: 250,                                
                                     fontColor: 'rgba(255, 255, 255, 1)',
                                     fontSize: 7,
                                     padding: 5,
@@ -665,10 +668,13 @@ $(document).ready(function() {
                                 type: 'linear',
                                 ticks: {
                                     beginAtZero: true,
-                                    stepSize: 1500,                                
+                                    stepSize: 20000,                                
                                     fontColor: 'rgba(255, 255, 255, 1)',
                                     fontSize: 7,
                                     padding: 5,
+                                    callback: function (value, index, values) {
+                                        return value / 1e3 + 'K';
+                                    }
                                 },
                                 gridLines: false
                             }],
@@ -801,7 +807,7 @@ $(document).ready(function() {
                                 type: 'linear',
                                 ticks: {
                                     beginAtZero: true,
-                                    stepSize: 20000000,                                
+                                    stepSize: 40000000,                                
                                     fontColor: 'rgba(255, 255, 255, 0.7)',
                                     fontSize: 8,
                                     padding: 5,
@@ -946,12 +952,12 @@ $(document).ready(function() {
                                 type: 'linear',
                                 ticks: {
                                     beginAtZero: true,
-                                    stepSize: 1000000,                                
+                                    stepSize: 500000,                                
                                     fontColor: 'rgba(255, 255, 255, 0.7)',
                                     fontSize: 8,
                                     padding: 5,
                                     callback: function (value, index, values) {
-                                        return value / 1e6 + 'M';
+                                        return value / 1e3 + 'K';
                                     }
                                 },
                                 gridLines: false
@@ -1082,7 +1088,7 @@ $(document).ready(function() {
                                 type: 'linear',
                                 ticks: {
                                     beginAtZero: true,
-                                    stepSize: 20000000,                                
+                                    stepSize: 40000000,                                
                                     fontColor: 'rgba(255, 255, 255, 1)',
                                     fontSize: 8,
                                     padding: 5,
@@ -1227,12 +1233,12 @@ $(document).ready(function() {
                                 type: 'linear',
                                 ticks: {
                                     beginAtZero: true,
-                                    stepSize: 1000000,                                
+                                    stepSize: 500000,                                
                                     fontColor: 'rgba(255, 255, 255, 1)',
                                     fontSize: 8,
                                     padding: 5,
                                     callback: function (value, index, values) {
-                                        return value / 1e6 + 'M';
+                                        return value / 1e3 + 'K';
                                     }
                                 },
                                 gridLines: false

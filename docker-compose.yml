@@ -1,0 +1,10 @@
+version: '3'
+services:
+  php-7.4:
+    container_name: php-7.4
+    image: ashenud/multiple-php-versions:1st-bulid-7.4
+    restart: always
+    ports:
+      - "9090:80"
+    volumes:
+      - "/var/lib/jenkins/workspace/covid-sl:/var/www/html"

@@ -7,18 +7,22 @@
     <link rel="icon" type="image/png" href="./assets/img/favicon.png">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta content='width=device-width, initial-scale=1.0, shrink-to-fit=no' name='viewport' />
+    <meta property="og:url" content="https://covid-sl.netlify.app">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Live Statistical Analysis Dashboard of COVID-19 Outbreak in Sri Lanka">
+    <meta property="og:description" content="Live statistical analysis dashboard of COVID-19 outbreak in Sri Lanka">
+    <meta property="og:image" content="http://covid-sl.netlify.app/assets/img/add.jpg">
+    <meta property="og:image" content="https://covid-sl.netlify.app/assets/img/add.jpg">
+
+    <script>
+      var lang = "si";
+    </script>
     
-      <!--     Fonts and icons     -->
-    <link rel="stylesheet" href="./assets/css/material-icons.css">
-    <link rel="stylesheet" href="./assets/css/fontawesome/css/all.css">
-    <link rel="stylesheet" href="./assets/css/unicode-fonts.css">
-    <link rel="stylesheet" href="./assets/css/english-fonts.css">
-    
-    <!-- CSS Files -->
-    <link rel="stylesheet" href="./assets/css/for-navbar.css"/>
-    <link rel="stylesheet" href="./assets/css/bootstrap.min.css"/>
-    <link rel="stylesheet" href="./assets/css/animate.css"/>
-    <link rel="stylesheet" href="./assets/css/style-index.css"/>
+    <link rel='stylesheet' href='https://api.mapbox.com/mapbox-gl-js/v1.8.1/mapbox-gl.css' />
+    <link rel="stylesheet" href="./assets/css/fontawesome/css/all.min.css">
+    <link rel="stylesheet" href="./assets/css/font.min.css"/>
+    <link rel="stylesheet" href="./assets/css/rest.min.css"/>
+    <link rel="stylesheet" href="./assets/css/style.css"/>
     
     <title>
       Coronavirus Sri Lanka - Analytics Dashboard
@@ -29,9 +33,9 @@
        
     <!-- navbar area -->
     <nav class="navbar navbar-expand-lg fixed-top navbar-transparent " color-on-scroll="30">
-        <div class="container nav-content">
+        <div class="container-fluid nav-content">
             <div class="navbar-translate">
-                <a class="navbar-brand" href="#" rel="tooltip" data-placement="bottom">
+                <a class="navbar-brand" href="/si.html" rel="tooltip" data-placement="bottom">
                     <img src="assets/img/icon-bw.png">COVID-19
                 </a>
                 <button class="navbar-toggler navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
@@ -45,24 +49,19 @@
                     <li class="nav-item">
                         <a class="nav-link js-scroll-trigger" href="#figures" onclick="scrollToDownload()">
                             <i class="now-ui-icons files_single-copy-04"></i>
-                            <p>figures</p>
+                            <p class="normal-sinhala fontsize5-si ml-1">සංඛ්‍යා විස්තර</p>
                         </a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link js-scroll-trigger" href="#HospitalData" onclick="scrollToDownload()">
                             <i class="now-ui-icons health_ambulance"></i>
-                            <p>hospital data</p>
+                            <p class="normal-sinhala fontsize5-si ml-1">රෝහල් තොරතුරු</p>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link js-scroll-trigger" href="#footer" onclick="scrollToDownload()">
-                            <i class="now-ui-icons travel_info"></i>
-                            <p>About</p>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="./index.html">
-                            <img src="./assets/img/eng-to-si.png" class="language">
+                        <a class="nav-link" href="/">
+                            <img src="./assets/img/si-to-eng.png" class="language">
+                            <p class="ml-1 mt-1 fontsize1-si ml-1">switch to English</p>
                         </a>
                     </li>                  
                 </ul>
@@ -103,7 +102,7 @@
                         
                         <div class="card-header figure-heding">
                             <div class="row">
-                                <h4 id="show">Total Figures (SL)</h4>
+                                <h4 id="show" class="hedding-sinhala">මුළු සටහන (දේශීය)</h4>
                             </div>
                         </div>
                         
@@ -119,7 +118,7 @@
                                         </div>
                                     </div>
                                     <div class="card-footer">
-                                        <p class="card-category">Confirmed</p>
+                                        <p class="card-category normal-sinhala fontsize1-si">තහවුරු වූ</p>
                                     </div>
                                 </div>    
                             </div>
@@ -135,7 +134,7 @@
                                         </div>
                                     </div>
                                     <div class="card-footer">
-                                        <p class="card-category">Active</p>
+                                        <p class="card-category normal-sinhala fontsize1-si">සක්‍රීය</p>
                                     </div>
                                 </div>    
                             </div>
@@ -151,7 +150,7 @@
                                         </div>
                                     </div>
                                     <div class="card-footer">
-                                        <p class="card-category">New</p>
+                                        <p class="card-category normal-sinhala fontsize1-si">නවතම</p>
                                     </div>
                                 </div>    
                             </div>
@@ -167,7 +166,7 @@
                                         </div>
                                     </div>
                                     <div class="card-footer">
-                                        <p class="card-category">Deaths</p>
+                                        <p class="card-category normal-sinhala fontsize1-si">මරණ</p>
                                     </div>
                                 </div>    
                             </div>
@@ -183,7 +182,7 @@
                                         </div>
                                     </div>
                                     <div class="card-footer">
-                                        <p class="card-category">Suspected</p>
+                                        <p class="card-category normal-sinhala fontsize1-si">සැක සහිත</p>
                                     </div>
                                 </div>    
                             </div>
@@ -199,7 +198,7 @@
                                         </div>
                                     </div>
                                     <div class="card-footer">
-                                        <p class="card-category">Recovered</p>
+                                        <p class="card-category normal-sinhala fontsize1-si">සුවය ලැබූ</p>
                                     </div>
                                 </div>    
                             </div>
@@ -207,8 +206,8 @@
                         
                         <div class="card-footer time-footer">
                             <div class="row update-time">
-                                <p class="card-category">
-                                    Last time update on <span id="update-local-date"></span> at <span id="update-local-time"></span>
+                                <p class="card-category normal-sinhala fontsize2-si">
+                                    අවසන් වරට යාවත්කාලීන කරන ලද්දේ  <span id="update-local-date"></span>  දින  <span id="update-local-time"></span>  ට
                                 </p>
                             </div>
                         </div>
@@ -218,14 +217,14 @@
                 
                 <!-- local timeline chart figures -->
                 <div class="col-md-6 order-xl-2 order-3 chart-local-timeline">
-                    <div class="card card-area card-chart container-fluid mt-4 mb-1 wow zoomIn" data-wow-duration="2s">
+                    <div class="card card-area card-chart timeline-si container-fluid mt-4 mb-1 wow zoomIn" data-wow-duration="2s">
                         <div class="card-header figure-heding">
                             <div class="row">
-                                <h4>Daily Cases (SL)</h4>
+                                <h4 class="hedding-sinhala">දෛනික හඳුනාගැනීම් (දේශීය)</h4>
                             </div>
                         </div>
                         <div class="card-body chart-body one">
-                            <canvas id="chart-timeline" class="chart-timeline"></canvas>
+                            <canvas id="chart-timelineSi" class="chart-timeline-si"></canvas>
                         </div>
                     </div>
                 </div>
@@ -236,7 +235,7 @@
                         
                         <div class="card-header figure-heding">
                             <div class="row">
-                                <h4>Total Figures (GLOBAL)</h4>
+                                <h4 class="hedding-sinhala">මුළු සටහන (ගෝලීය)</h4>
                             </div>
                         </div>
                         
@@ -252,7 +251,7 @@
                                         </div>
                                     </div>
                                     <div class="card-footer">
-                                        <p class="card-category">Confirmed</p>
+                                        <p class="card-category normal-sinhala fontsize1-si">තහවුරු වූ</p>
                                     </div>
                                 </div>    
                             </div>
@@ -268,7 +267,7 @@
                                         </div>
                                     </div>
                                     <div class="card-footer">
-                                        <p class="card-category">Active</p>
+                                        <p class="card-category normal-sinhala fontsize1-si">සක්‍රීය</p>
                                     </div>
                                 </div>    
                             </div>
@@ -284,7 +283,7 @@
                                         </div>
                                     </div>
                                     <div class="card-footer">
-                                        <p class="card-category">New</p>
+                                        <p class="card-category normal-sinhala fontsize1-si">නවතම</p>
                                     </div>
                                 </div>    
                             </div>
@@ -300,7 +299,7 @@
                                         </div>
                                     </div>
                                     <div class="card-footer">
-                                        <p class="card-category">Recovered</p>
+                                        <p class="card-category normal-sinhala fontsize1-si">සුවය ලැබූ</p>
                                     </div>
                                 </div>    
                             </div>
@@ -316,7 +315,7 @@
                                         </div>
                                     </div>
                                     <div class="card-footer">
-                                        <p class="card-category">Deaths</p>
+                                        <p class="card-category normal-sinhala fontsize1-si">මරණ</p>
                                     </div>
                                 </div>    
                             </div>
@@ -332,7 +331,7 @@
                                         </div>
                                     </div>
                                     <div class="card-footer">
-                                        <p class="card-category">New Deaths</p>
+                                        <p class="card-category normal-sinhala fontsize1-si">නවතම මරණ</p>
                                     </div>
                                 </div>    
                             </div>
@@ -340,8 +339,8 @@
                         
                         <div class="card-footer time-footer">
                             <div class="row update-time">
-                                <p class="card-category">
-                                    Last time update on <span id="update-global-date"></span> at <span id="update-global-time"></span>
+                                <p class="card-category normal-sinhala fontsize2-si">
+                                    අවසන් වරට යාවත්කාලීන කරන ලද්දේ  <span id="update-global-date"></span>  දින  <span id="update-global-time"></span>  ට
                                 </p>
                             </div>
                         </div>
@@ -349,18 +348,18 @@
                     </div>
                 </div>
                 
-                <!-- daily recoveries and breakdown of total Cases -->
-                <div class="col-xl-3 col-md-6 order-5 order-xl-4">
+                <!-- daily recoveries and breakdown of total Cases and total vs active Cases -->
+                <div class="col-xl-3 col-md-6 order-5 order-xl-4 left-local">
                     <!-- daily recoveries -->
                     <div class="recovery">
                         <div class="card card-area card-chart container-fluid mt-4 mb-1 wow fadeInLeft" data-wow-duration="2s">
                             <div class="card-header figure-heding">
                                 <div class="row">
-                                    <h4>Daily Recoveries (SL)</h4>
+                                    <h4 class="hedding-sinhala">දෛනික සුවවීම් (දේශීය)</h4>
                                 </div>
                             </div>
                             <div class="card-body chart-body two">
-                                <canvas id="chart-recovery" class="line-chart"></canvas>
+                                <canvas id="chart-recoverySi" class="line-chart"></canvas>
                             </div>
                         </div>
                     </div>
@@ -370,45 +369,111 @@
                         <div class="card card-area card-chart container-fluid mt-4 mb-1 wow fadeInLeft" data-wow-duration="2s">
                             <div class="card-header figure-heding">
                                 <div class="row">
-                                    <h4>Breakdown of Total Cases (SL)</h4>
+                                    <h4 class="hedding-sinhala">සම්පූර්ණ හඳුනාගැනීම් පැතිරීම (දේශීය)</h4>
                                 </div>
                             </div>
                             <div class="card-body chart-body nine">
-                                <canvas id="chart-breakdown" class="line-chart"></canvas>
+                                <canvas id="chart-breakdownSi" class="line-chart"></canvas>
                             </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- total vs active -->
-                <div class="col-xl-6 col-md-6 order-4 order-xl-5 chart-total-vs-active">
-                   
-                    <div class="card card-area card-chart container-fluid mt-4 mb-1 wow zoomIn" data-wow-duration="2s">
-                        <div class="card-header figure-heding">
-                            <div class="row">
-                                <h4>Total Vs Active Cases (SL)</h4>
-                            </div>
-                        </div>
-                        <div class="card-body chart-body eighth">
-                            <canvas id="chart-totalVSactive" class="line-chart"></canvas>
                         </div>
                     </div>
                     
+                    <!-- total vs active Cases -->
+                    <div class="chart-total-vs-active">
+                        <div class="card card-area card-chart container-fluid mt-4 mb-1 wow fadeInLeft" data-wow-duration="2s">
+                            <div class="card-header figure-heding">
+                            <div class="row">
+                                <h4 class="hedding-sinhala fontsize3-si">මුළු හඳුනාගැනීම් හා සක්‍රීය හඳුනාගැනීම් අතර සටහන (දේශීය)</h4>
+                            </div>
+                        </div>
+                        <div class="card-body chart-body eighth">
+                            <canvas id="chart-totalVSactiveSi" class="line-chart"></canvas>
+                        </div>
+                        </div>
+                    </div>
                 </div>
                 
-                <!-- total and braekdown in global -->
-                <div class="col-xl-3 col-md-6 order-6">
+                <!-- map area -->
+                <div class="col-xl-6 col-md-6 order-4 order-xl-5 map-district-distribution map">
+
+                    <div id="map-wrapper" class="card card-area card-map container-fluid mt-4 mb-1 wow zoomIn" data-wow-duration="2s">
+                        <div class="card-header figure-heding">
+                            <div class="row">
+                                <h4 class="hedding-sinhala">දිස්ත්‍රික්ක අතර බෙදීයාම (දේශීය)</h4>
+                                <div class="switch-wrapper map-type-switch">
+                                    <label for="map-switcher" class="normal-sinhala">සජීවීකරණය/ස්ථිතික</label>
+                                    <input class="type-switch" id="map-switcher" type="checkbox" name="map-switcher" autocomplete="off">
+                                </div>
+                                
+                            </div>
+                        </div>
+
+                        <div class="card-body chart-body map-body">
+                            <div id='map' class="one map-si"></div>
+                            <div id="animated-mapoverlaycontainer" class="map-overlay-container">
+                                <div class="map-overlay">
+                                    <h2 id="location-title"><span class="normal-sinhala"></span></h2>
+                                    <p id="location-description" class="normal-sinhala">තහවුරු කළ රෝගීන් <span></span> යි</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        
+                    </div>
+                </div>
+                <!-- map area -->
+
+                <!-- District Table area -->
+                <div class="col-xl-6 col-md-6 order-4 d-md-none">
+                
+                    <div class="card card-area container-fluid mt-4 mb-1 wow zoomIn" data-wow-duration="2s">
+                        <div class="card-header figure-heding">
+                            <div class="row">
+                                <h4 class="hedding-sinhala">දිස්ත්‍රික්ක අතර බෙදීයාම (දේශීය)</h4>
+                            </div>
+                        </div>
+                
+                         <div id="district-table" class="card-body">
+                             <div>
+                                 <table class="table table-dark">
+                                     <thead>
+                                         <tr>
+                                             <th scope="col" class="normal-sinhala">දිස්ත්‍රික්කය</th>
+                                             <th scope="col" class="normal-sinhala">රෝගීන්</th>
+                                         </tr>
+                                     </thead>
+                                     <tbody>
+
+                                     </tbody>
+                                 </table>
+                             </div>
+                         </div>
+                        <div class="card-footer text-muted dis-table-footer">
+                            <a id="district-tableshowmore" class="showmore" href="#" data-lesstext="මදක් පෙන්වන්න"
+                                data-moretext="සියල්ල පෙන්වන්න"><span class="normal-sinhala fontsize1-si">සියල්ල
+                                    පෙන්වන්න </span><i
+                                    class="now-ui-icons arrows-1_minimal-down"></i></a>
+                        </div>
+                
+                    </div>
+
+                   
+                </div>
+                <!-- District Table area -->
+
+                <!-- total and braekdown and New Cases vs. New Recoveries in global -->
+                <div class="col-xl-3 col-md-6 order-6 right-global">
 
                     <!-- global total -->
                     <div class="global-total">
                         <div class="card card-area card-chart container-fluid mt-4 mb-1 wow fadeInRight" data-wow-duration="2s">
                             <div class="card-header figure-heding">
                                 <div class="row">
-                                    <h4>Total Cases Growth (GLOBAL)</h4>
+                                    <h4 class="hedding-sinhala">මුළු හඳුනාගැනීම් වර්ධනය (ගෝලීය)</h4>
                                 </div>
                             </div>
                             <div class="card-body chart-body three">
-                                <canvas id="chart-global-total" class="line-chart"></canvas>
+                                <canvas id="chart-global-totalSi" class="line-chart"></canvas>
                             </div>
                         </div>
                     </div>
@@ -418,11 +483,25 @@
                         <div class="card card-area card-chart container-fluid mt-4 mb-1 wow fadeInRight" data-wow-duration="2s">
                             <div class="card-header figure-heding">
                                 <div class="row">
-                                    <h4>Breakdown of Total Cases (GLOBAL)</h4>
+                                    <h4 class="hedding-sinhala">සම්පූර්ණ හඳුනාගැනීම් පැතිරීම (ගෝලීය)</h4>
                                 </div>
                             </div>
                             <div class="card-body chart-body nine">
-                                <canvas id="chart-global-breakdown" class="line-chart"></canvas>
+                                <canvas id="chart-global-breakdownSi" class="line-chart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- New Cases vs. New Recoveries global -->
+                    <div class="new-vs-recoveries-global">
+                        <div class="card card-area card-chart container-fluid mt-4 mb-1 wow fadeInRight" data-wow-duration="2s">
+                            <div class="card-header figure-heding">
+                                <div class="row">
+                                    <h4 class="hedding-sinhala fontsize3-si">දෛනික හඳුනාගැනීම් හා දෛනික සුවවීම් අතර සටහන (ගෝලීය)</h4>
+                                </div>
+                            </div>
+                            <div class="card-body chart-body ten">
+                                <canvas id="chart-global-new-vs-recoveriesSi" class="line-chart"></canvas>
                             </div>
                         </div>
                     </div>
@@ -440,47 +519,47 @@
                         
                         <div class="card-header figure-heding">
                             <div class="row">
-                                <h4>data by Hospitals (SL)</h4>
+                                <h4 class="hedding-sinhala">රෝහල් තොරතුරු (දේශීය)</h4>
                             </div>
                                
                             <div class="row">
                                 <div class="select-hospital">
                                     <form action="" method="POST">
-                                        <select class="form-control custom-select" id="hSelect" name="hSelect">
-                                            <option value="" disabled selected>select the hospital</option>
-                                            <option value="0">National Institute of Infectious Diseases</option>
-                                            <option value="1">National Hospital Sri Lanka</option>
-                                            <option value="2">Teaching Hospital - Ragama</option>
-                                            <option value="3">Teaching Hospital - Karapitiya</option>
-                                            <option value="4">Teaching Hospital - Anuradhapura</option>
-                                            <option value="5">Teaching Hospital - Kurunegala</option>
-                                            <option value="6">Teaching Hospital - Jaffna</option>
-                                            <option value="7">National Hospital Kandy</option>
-                                            <option value="8">Teaching Hospital - Batticaloa</option>
-                                            <option value="9">District General Hospital - Gampaha</option>
-                                            <option value="10">District General Hospital - Negombo</option>
-                                            <option value="11">Teaching Hospital - Rathnapura</option>
-                                            <option value="12">Provincial General Hospital - Badulla</option>
-                                            <option value="13">Lady Ridgeway Hospital</option>
-                                            <option value="14">De Soysa Hospital for Women</option>
-                                            <option value="15">District General Hospital - Polonnaruwa</option>
-                                            <option value="16">Teaching Hospital - Kalubowila</option>
-                                            <option value="17">Castle Street Teaching Hospital</option>
-                                            <option value="18">Base Hospital- Hambantota</option>
-                                            <option value="19">Base Hospital - Monaragala</option>
-                                            <option value="20">Base Hospital - Welikanda</option>
-                                            <option value="21">District General Hospital - Kalutara</option>
-                                            <option value="22">Chest Hospital Welisara</option>
-                                            <option value="23">Base Hospital - Mulleriyawa</option>
-                                            <option value="24">Base Hospital - Homagama</option>
-                                            <option value="25">Dr. Nevil Fernando Hospital</option>
-                                            <option value="26">District General Hospital - Chillaw</option>
-                                            <option value="27">District General Hospital - Matara</option>
-                                            <option value="28">K.D.U. Hospital</option>
-                                            <option value="29">District General Hospital - Vavunia</option>
-                                            <option value="30">Base Hospital - Marawila</option>
-                                            <option value="31">Teaching Hospital - Sri Jayawadhanapura</option>
-                                            <option value="32">Base Hospital - Beruwala</option>
+                                        <select class="form-control custom-select normal-sinhala" id="hSelect" name="hSelect">
+                                            <option value="" disabled selected>රෝහල තෝරන්න</option>
+                                            <option value="0">බෝවන රෝග පිළිබඳ ජාතික ආයතනය</option>
+                                            <option value="1">ශ්‍රී ලංකා ජාතික රෝහල</option>
+                                            <option value="2">ශික්ෂණ රෝහල - රාගම</option>
+                                            <option value="3">ශික්ෂණ රෝහල - කරාපිටිය</option>
+                                            <option value="4">ශික්ෂණ රෝහල - අනුරාධපුරය</option>
+                                            <option value="5">ශික්ෂණ රෝහල - කුරුණගල</option>
+                                            <option value="6">ශික්ෂණ රෝහල - යාපනය</option>
+                                            <option value="7">ජාතික රෝහල - මහනුවර</option>
+                                            <option value="8">ශික්ෂණ රෝහල - මඩකලපුව</option>
+                                            <option value="9">දිස්ත්‍රික් මහ රෝහල - ගම්පහ</option>
+                                            <option value="10">දිස්ත්‍රික් මහ රෝහල - මීගමුව</option>
+                                            <option value="11">ශික්ෂණ රෝහල - රත්නපුර</option>
+                                            <option value="12">පළාත් මහ රෝහල - බදුල්ල</option>
+                                            <option value="13">රිජ්වේ ආර්යා ළමා රෝහල</option>
+                                            <option value="14">ඩි සොයිසා කාන්තා රෝහල</option>
+                                            <option value="15">දිස්ත්‍රික් මහ රෝහල - පොලොන්නරුව</option>
+                                            <option value="16">දිස්ත්‍රික් මහ රෝහල - කලුබෝවිල</option>
+                                            <option value="17">කාසල් වීදියේ ශික්ෂණ රෝහල</option>
+                                            <option value="18">මූලික රෝහල - හම්බන්තොට</option>
+                                            <option value="19">මූලික රෝහල - මොනරාගල</option>
+                                            <option value="20">මූලික රෝහල - වැලිකන්ද</option>
+                                            <option value="21">දිස්ත්‍රික් මහ රෝහල - කළුතර</option>
+                                            <option value="22">ළය රෝහල - වැලිසර</option>
+                                            <option value="23">මූලික රෝහල - මුල්ලේරියාව</option>
+                                            <option value="24">මූලික රෝහල - හෝමාගම</option>
+                                            <option value="25">නෙවිල් ප්‍රනාන්දු රෝහල</option>
+                                            <option value="26">දිස්ත්‍රික් මහ රෝහල - හලාවත</option>
+                                            <option value="27">දිස්ත්‍රික් මහ රෝහල - මාතර</option>
+                                            <option value="28">කොතලාවල ආරක්ෂක විශ්ව විද්‍යාල රෝහල</option>
+                                            <option value="29">දිස්ත්‍රික් මහ රෝහල - වවුනියාව</option>
+                                            <option value="30">මූලික රෝහල - මාරවිල</option>
+                                            <option value="31">දශික්ෂණ රෝහල - ශ්‍රී ජයවර්ධනපුර</option>
+                                            <option value="32">මූලික රෝහල - බේරුවල</option>
                                         </select>
                                     </form>
                                 </div>
@@ -489,10 +568,10 @@
                         
                         <div class="row card-row">
                             <div class="card-col col-xl-12 col-lg-12">
-                                <div class="card card-stats hospital-name-uptime seven">
+                                <div class="card card-stats hospital-name-uptime seventy">
                                     <div class="card-footer d-flex">
-                                        <p class="card-category hname hide" id="hName">
-                                            Last time update on $$__Data__$$ at $$__time__$$
+                                        <p class="card-category hname normal-sinhala fontsize2-si hide" id="hNameSi">
+                                            අවසන් වරට යාවත්කාලීන කරන ලද්දේ $$__Data__$$ දින $$__time__$$ ට
                                         </p>
                                     </div>
                                 </div>    
@@ -512,7 +591,7 @@
                                         </div>
                                     </div>
                                     <div class="card-footer">
-                                        <p class="card-category">Total number of Sri Lankans <br> who have been treated</p>
+                                        <p class="card-category normal-sinhala fontsize1-si">නිරීක්ෂණය කළ මුළු<br>ශ්‍රී ලාංකිකයන්ගේ සංඛ්‍යාව</p>
                                     </div>
                                 </div>    
                             </div>
@@ -528,7 +607,7 @@
                                         </div>
                                     </div>
                                     <div class="card-footer">
-                                        <p class="card-category">Total number of foreigners <br> who have been treated</p>
+                                        <p class="card-category normal-sinhala fontsize1-si">නිරීක්ෂණය කළ මුළු<br>විදේශිකයින්ගේ සංඛ්‍යාව</p>
                                     </div>
                                 </div>    
                             </div>
@@ -544,7 +623,7 @@
                                         </div>
                                     </div>
                                     <div class="card-footer">
-                                        <p class="card-category">Total number of Sri Lankans <br> who are currently on treatment</p>
+                                        <p class="card-category normal-sinhala fontsize1-si">නිරීක්ෂණයේ සිටින මුළු<br>ශ්‍රී ලාංකිකයන්ගේ සංඛ්‍යාව</p>
                                     </div>
                                 </div>    
                             </div>
@@ -560,7 +639,7 @@
                                         </div>
                                     </div>
                                     <div class="card-footer">
-                                        <p class="card-category">Total number of foreigners <br> who are currently on treatmen</p>
+                                        <p class="card-category normal-sinhala fontsize1-si">නිරීක්ෂණයේ සිටින මුළු<br>විදේශිකයින්ගේ සංඛ්‍යාව</p>
                                     </div>
                                 </div>    
                             </div>
@@ -583,27 +662,56 @@
                 &copy;
                 <script>
                     document.write(new Date().getFullYear())
-                </script>, made by Ashen Udithamal.
-                <a href="https://www.linkedin.com/in/ashenud/" target="_blank">
-                    <i class="fab fa-linkedin"></i>
-                </a>
-                <a href="https://facebook.com/ashen.lk" target="_blank">
-                    <i class="fab fa-facebook-square"></i>
-                </a>
-                <a href="https://twitter.com/ashen_ud" target="_blank">
-                    <i class="fab fa-twitter-square"></i>
-                </a>
-                <a href="https://www.instagram.com/ashen_ud/" target="_blank">
-                    <i class="fab fa-instagram-square"></i>
-                </a>
+                </script>, developed by 
+                <div>
+                    Ashen Udithamal.
+                    <a href="https://www.linkedin.com/in/ashenud/" target="_blank">
+                        <i class="fab fa-linkedin"></i>
+                    </a>
+                    <a href="https://facebook.com/ashen.lk" target="_blank">
+                        <i class="fab fa-facebook-square"></i>
+                    </a>
+                    <a href="https://twitter.com/ashen_ud" target="_blank">
+                        <i class="fab fa-twitter-square"></i>
+                    </a>
+                </div> 
+                <div>
+                    Samith Chandula.
+                    <a href="https://www.linkedin.com/in/samith-perera/" target="_blank">
+                        <i class="fab fa-linkedin"></i>
+                    </a>
+                    <a href="https://www.facebook.com/samith.perera.792" target="_blank">
+                        <i class="fab fa-facebook-square"></i>
+                    </a>
+                    <a href="https://twitter.com/samithchandula" target="_blank">
+                        <i class="fab fa-twitter-square"></i>
+                    </a>
+                </div>
             </div>
             
-            <div class="copyright api float-left">
-                Local Information Source(API) - 
-                <a href="https://www.hpb.health.gov.lk/en" target="_blank">
-                    Health Promotion Bureau - Sri Lanka
-                </a>
+            <div class="data-sources float-left">
+                <div class="copyright api normal-sinhala fontsize1-si float-left text-justify">
+                    දේශීය තොරතුරු මූලශ්‍රය(API) -  
+                    <a class="normal-sinhala" href="https://www.hpb.health.gov.lk/en" target="_blank">
+                         සෞඛ්‍ය ප්‍රවර්ධන කාර්යාංශය - ශ්‍රී ලංකාව
+                    </a>
+                </div>
+
+                <div class="copyright api normal-sinhala fontsize1-si float-left text-justify">
+                    දිස්ත්‍රික්කගත තොරතුරු -  
+                    <a class="normal-sinhala" href="http://www.epid.gov.lk/" target="_blank">
+                         වසංගත රෝග විද්‍යා අංශය - සෞඛ්‍ය අමාත්‍යංශය
+                    </a>
+                </div>
+
+                <div class="copyright api normal-sinhala fontsize1-si float-left text-justify">
+                    දෛනික රේඛීය දත්ත මූලාශ්‍රය(API) -  
+                    <a class="normal-sinhala" href="https://about-corona.net/" target="_blank">
+                         about-corona.net
+                    </a>
+                </div>
             </div>
+            <h1>Live Statistical Analysis Dashboard of COVID-19 Outbreak in Sri Lanka</h1>
         </div>
     </footer>
   
@@ -612,18 +720,17 @@
     <!--   Core JS Files   -->
     <script type="text/javascript" src="./assets/js/core/jquery.min.js"></script>
     <script type="text/javascript" src="./assets/js/core/popper.min.js"></script>
-    <script type="text/javascript" src="./assets/js/core/bootstrap-material-design.min.js"></script>
     <script type="text/javascript" src="./assets/js/core/bootstrap.min.js"></script>
-    <script type="text/javascript" src="./assets/js/plugins/moment.min.js"></script>
     <script type="text/javascript" src="./assets/js/jquery.waypoints.min.js"></script>
-    <script type="text/javascript" src="./assets/js/jquery.counterup.min.js"></script>
     <script type="text/javascript" src="./assets/js/charts/Chart.js"></script>
     <script type="text/javascript" src="./assets/js/wow.min.js"></script>
+    <script type="text/javascript" src="./assets/js/plugins/papaparse.min.js"></script>
+    <script src='https://api.mapbox.com/mapbox-gl-js/v1.8.1/mapbox-gl.js'></script>
 
-    <script type="text/javascript" src="./assets/js/for-navbar.js"></script>
-    <script type="text/javascript" src="./assets/js/mdb.min.js"></script>
-    <script type="text/javascript" src="./assets/js/api-data.js"></script>
-    <script type="text/javascript" src="./assets/js/chart-data.js"></script>
+    <script type="text/javascript" src="./assets/js/navbar.min.js"></script>
+    <script type="text/javascript" src="./assets/js/api.data.js"></script>
+    <script type="text/javascript" src="./assets/js/chart.data.js"></script>
+    <script type="text/javascript" src="./assets/js/map.data.js"></script>
   
     <!-- activate wow -->
     <script>
@@ -635,16 +742,6 @@
       }
 
       new WOW().init();
-    </script>
-  
-    <!-- counting up -->
-    <script>
-        jQuery(document).ready(function() {
-            $('.counter').counterUp({
-                delay: 10,
-                time: 1000
-            });
-        });
     </script>
     
     <!-- Smooth scroll -->
@@ -664,10 +761,13 @@
 	
     <!-- footer in small device -->
     <script>
+        
         if ($(window).width() <= 640){ 
             $(".copyright").removeClass('float-right');
-            $(".api").removeClass('float-left');
+            $(".data-sources").removeClass('float-left');
+            $(".api").removeClass('text-justify');
         }
+
     </script>
 	
   
